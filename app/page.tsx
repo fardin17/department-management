@@ -80,6 +80,10 @@ export default function Home() {
           />
           Go to nextjs.org →
         </a>
+
+        <div>
+          <p>Md. Redoan Ahammad</p>
+        </div>
       </footer>
 
       <p>
