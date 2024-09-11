@@ -85,6 +85,7 @@ export default function Home() {
       <p>
         Iqbal Hosen
       </p>
+      <p> I am a Student</p>
     </div>
   );
 
