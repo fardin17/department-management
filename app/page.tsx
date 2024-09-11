@@ -20,6 +20,9 @@ export default function Home() {
             target="_blank"
             rel="noopener noreferrer"
           >
+   
+        
+
             <Image
               className="dark:invert"
               src="https://nextjs.org/icons/vercel.svg"
@@ -78,6 +81,14 @@ export default function Home() {
           Go to nextjs.org →
         </a>
       </footer>
+
+      <p>
+        Iqbal Hosen
+      </p>
     </div>
   );
+
+  
+
+
 }
