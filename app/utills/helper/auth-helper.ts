@@ -10,9 +10,9 @@ export const authOptions: NextAuthOptions = {
         email: { label: "Username", type: "email" },
         password: { label: "Password", type: "password" },
       },
-      async authorize(credentials, req) {
-        console.log({ credentials, req });
-        const res = await fetch("http://localhost:3000/api/sign-up", {
+      async authorize(credentials) {
+        console.log({ credentials });
+        const res = await fetch("http://localhost:3000/api/sign-in", {
           method: "POST",
           body: JSON.stringify(credentials),
           headers: { "Content-Type": "application/json" },
@@ -38,19 +38,33 @@ export const authOptions: NextAuthOptions = {
       },
     }),
   ],
+  //sign-in====>(session,token)
   callbacks: {
     async signIn({ user }) {
-      return user ? true : "/auth/sign-up";
+      return user?.email ? true : "/auth/login";
     },
-    async redirect({ url }) {
-      console.log({ url });
+    async jwt({ token, account, user }) {
+      if (!!account?.access_token && user.email) {
+        const res = await fetch("http://localhost:3000/api/sign-in", {
+          method: "POST",
+          body: JSON.stringify({ email: user.email, provider: account?.provider, access_token: account?.access_token }),
+          headers: { "Content-Type": "application/json" },
+        });
+        const result = await res.json();
+        console.log({ result });
+        token.accessToken = result.access_token;
+      }
+      console.log({ token });
+      return token;
+    },
+    async redirect({ url, baseUrl }) {
+      console.log({ url, baseUrl });
       return "/dashboard";
     },
-    async session({ session }) {
-      return session;
-    },
-    async jwt({ token }) {
-      return token;
+    async session({ session, token }) {
+      console.log({ token });
+      session.accessToken = token.accessToken;
+      return { ...session, name: "fardin" };
     },
   },
 };

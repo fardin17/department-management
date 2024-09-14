@@ -1,0 +1,27 @@
+{
+  "users": [
+    {
+      "id": "80b4",
+      "name": "test 46",
+      "email": "01@yopmail.com",
+      "password": "A+123456a",
+      "terms": true,
+      "type": "teacher"
+    },
+    {
+      "id": "6e70",
+      "email": "01@yopmail.com",
+      "password": "A+123456",
+      "callbackUrl": "/dashboard",
+      "csrfToken": "a6da0d317b3ed18b303473e046022e3c2f1f8127ae8ae692fcba30f391249a9c",
+      "json": "true"
+    },
+    {
+      "id": "edcd",
+      "email": "fardin785@gmail.com",
+      "provider": "google",
+      "access_token": "ya29.a0AcM612zEnyqje-0unD_mtNJyoNwLetwt_Iz3azex_UTABMhKIIyxdc9JZF51UxN9Lts2VJt-7SoiOALII4DNBAIAK5YjgXRqzvRPLj9KLjJRVNOASF5m5r3ICksaxuqMO7oUzIBCN_OrdvFP1XCNAJ-k_4UphAz1q175PAWRaCgYKARwSARESFQHGX2MiS8UXvPe6RY9k8R_sDQZ_Yg0175"
+    }
+  ],
+  "students": []
+}
