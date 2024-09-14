@@ -7,7 +7,7 @@ import { SignUpFormFields } from "@/assets/formFields";
 import { FormInput, FormInputErrorText } from "@/components/form-input";
 import LogoSVG from "@/assets/logo";
 import toast from "react-hot-toast";
-import { useSession, signIn, signOut } from "next-auth/react";
+import { signIn } from "next-auth/react";
 
 export default function SignUpForm() {
   const {
