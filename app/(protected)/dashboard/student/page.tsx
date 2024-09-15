@@ -1,25 +1,25 @@
 import Sidebar from "@/components/ui/sidebar";
-import AddLessonButton from "@/components/ui/teacher-dashboard/addLessonButton";
+import RequestButton from "@/components/ui/student-dashboard/requestButton";
 import dynamic from "next/dynamic";
 
-const ClassesCompletionChart = dynamic(
-  () => import("@/components/ui/teacher-dashboard/classesCompletionChart"),
+const MarksDistribution = dynamic(
+  () => import("@/components/ui/student-dashboard/marksDistribution"),
   { ssr: false }
 );
-const ProgressChart = dynamic(
-  () => import("@/components/ui/teacher-dashboard/progressChart"),
+const TeacherList = dynamic(
+  () => import("@/components/ui/student-dashboard/teacherList"),
   { ssr: false }
 );
-const NotesList = dynamic(
-  () => import("@/components/ui/teacher-dashboard/subjecNote"),
+const DownloadNotes = dynamic(
+  () => import("@/components/ui/student-dashboard/downloadNotes"),
   { ssr: false }
 );
-const TeacherCourseCard = dynamic(
-  () => import("@/components/ui/teacher-dashboard/teacherCourseCard"),
+const StudentCourseCard = dynamic(
+  () => import("@/components/ui/student-dashboard/studentCourseCard"),
   { ssr: false }
 );
 
-const TeacherDashboard = () => {
+const StudentDashboard = () => {
   return (
     <section className="bg-gray-100 min-h-screen flex justify-center items-center">
       <div className="flex h-[90vh] max-w-[1400px] w-full mx-auto rounded-lg shadow-lg">
@@ -33,32 +33,35 @@ const TeacherDashboard = () => {
           <div className="flex justify-between bg-white py-3 px-2 rounded-lg">
             <div className="flex items-center">
               <div className="w-4 h-8 rounded-md bg-[#F8C7B0] mr-4"></div>
-              <h1 className="text-xl font-bold">Design Science</h1>
+              <h1 className="text-xl font-bold">My Subject</h1>
             </div>
-            <AddLessonButton></AddLessonButton>
+            <RequestButton></RequestButton>
           </div>
 
           {/* Course Card */}
-          <div className="flex gap-2 mt-2">
-            <TeacherCourseCard />
-            <TeacherCourseCard />
-            <TeacherCourseCard />
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mt-6">
+            <StudentCourseCard />
+            <StudentCourseCard />
+            <StudentCourseCard />
+            <StudentCourseCard />
+            <StudentCourseCard />
+            <StudentCourseCard />
           </div>
 
           <div>
-            <ClassesCompletionChart></ClassesCompletionChart>
+            <MarksDistribution></MarksDistribution>
           </div>
         </div>
 
         {/* Right Sidebar */}
         <div className="w-72 p-6 space-y-4 rounded-r-lg overflow-y-auto">
-          <ProgressChart />
+          <TeacherList></TeacherList>
 
-          <NotesList />
+          <DownloadNotes></DownloadNotes>
         </div>
       </div>
     </section>
   );
 };
 
-export default TeacherDashboard;
+export default StudentDashboard;
