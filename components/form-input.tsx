@@ -1,6 +1,6 @@
 "use client";
 
-import { cn } from "@/app/utills/helper/global-helper";
+import { cn } from "@/app/utils/helper/global-helper";
 import type { HTMLInputTypeAttribute } from "react";
 import type { FieldValues, Path, UseFormRegister } from "react-hook-form";
 
