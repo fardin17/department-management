@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import { Toaster } from "react-hot-toast";
+import { getServerAuthSession } from "./utils/helper/auth-helper";
+import AuthSessionProvider from "@/provider/authSession";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -24,11 +26,15 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const session = await getServerAuthSession()
+
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        {children}
-        <Toaster />
+        <AuthSessionProvider session={session}>
+          {children}
+          <Toaster />
+        </AuthSessionProvider>
       </body>
     </html>
   );

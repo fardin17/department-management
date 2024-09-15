@@ -6,7 +6,7 @@ import { redirect } from "next/navigation";
 
 export default async function layout({ children }: { children: React.ReactNode }) {
   const session = getServerAuthSession()
-  console.log({ session });
+  // console.log({ session });
   if (!session) redirect("/auth/login");
   return (
     <div>

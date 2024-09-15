@@ -1,26 +1,23 @@
 {
   "users": [
     {
-      "id": "80b4",
-      "name": "test 46",
-      "email": "01@yopmail.com",
-      "password": "A+123456a",
-      "terms": true,
-      "type": "teacher"
-    },
-    {
-      "id": "6e70",
-      "email": "01@yopmail.com",
-      "password": "A+123456",
-      "callbackUrl": "/dashboard",
-      "csrfToken": "a6da0d317b3ed18b303473e046022e3c2f1f8127ae8ae692fcba30f391249a9c",
-      "json": "true"
-    },
-    {
-      "id": "edcd",
-      "email": "fardin785@gmail.com",
+      "id": "1bb01f5b-44dd-47ec-9415-f85232bbfcf2",
+      "email": "topuroy.dev@gmail.com",
+      "name": "Topu Roy",
       "provider": "google",
-      "access_token": "ya29.a0AcM612zEnyqje-0unD_mtNJyoNwLetwt_Iz3azex_UTABMhKIIyxdc9JZF51UxN9Lts2VJt-7SoiOALII4DNBAIAK5YjgXRqzvRPLj9KLjJRVNOASF5m5r3ICksaxuqMO7oUzIBCN_OrdvFP1XCNAJ-k_4UphAz1q175PAWRaCgYKARwSARESFQHGX2MiS8UXvPe6RY9k8R_sDQZ_Yg0175"
+      "terms": true,
+      "type": null,
+      "image": "https://lh3.googleusercontent.com/a/ACg8ocIbVlek6uuRjnS4oOk9r2-pgWG49VbW5w--9_8kp41VTteTxDc=s96-c"
+    },
+    {
+      "id": "604e61cf-bdc9-4cd7-964f-9edf74fe7049",
+      "email": "topuroy143333@gmail.com",
+      "name": "Topu Roy",
+      "provider": "credentials",
+      "terms": true,
+      "type": "student",
+      "password": "topuroy143333@gmail.com",
+      "image": null
     }
   ],
   "students": []
