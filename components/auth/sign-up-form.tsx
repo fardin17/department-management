@@ -7,9 +7,18 @@ import { SignUpFormFields } from "@/assets/formFields";
 import { FormInput, FormInputErrorText } from "@/components/form-input";
 import LogoSVG from "@/assets/logo";
 import toast from "react-hot-toast";
-import { signIn } from "next-auth/react";
+import { useSession } from "next-auth/react";
+import { useEffect } from "react";
+import { useRouter } from "next/navigation";
 
 export default function SignUpForm() {
+  const router = useRouter()
+  const { data } = useSession()
+
+  useEffect(() => {
+    if (data?.user) router.push("/dashboard")
+  }, [data])
+
   const {
     register,
     handleSubmit,
@@ -23,29 +32,35 @@ export default function SignUpForm() {
     },
   });
 
-  const onSubmit = (data: SignUpSchemaType) => {
-    // signIn("credentials", { email: data?.email, password: data?.password, callbackUrl: "/dashboard" });
-    console.log("submitting");
+  const onSubmit = async (data: SignUpSchemaType) => {
+    try {
+      const response = await fetch("http://localhost:3000/api/sign-up", {
+        method: "POST",
+        body: JSON.stringify(data),
+        headers: { "Content-Type": "application/json" },
+      })
 
-    fetch("/api/sign-up", {
-      method: "POST",
-      body: JSON.stringify(data),
-      headers: { "Content-Type": "application/json" },
-    })
-      .then((data) => data.json())
-      .then((result) => console.log({ result }))
-      .catch((err) => console.log({ err }));
-    // toast.success(
-    //   JSON.stringify({
-    //     className: "bg-slate-950 border-0",
-    //     title: "You submitted the following values:",
-    //     description: (
-    //       <pre className="mt-2 w-[340px] rounded-md bg-gray-800 p-4">
-    //         <code className="text-white">{JSON.stringify(data, null, 2)}</code>
-    //       </pre>
-    //     ),
-    //   })
-    // );
+      if (response.ok) {
+        router.push("/auth/login")
+
+        toast.success(
+          JSON.stringify("Account created successfully.")
+        );
+      }
+
+      if (!response.ok) {
+        toast.error(
+          JSON.stringify("Sign Up failed")
+        );
+      }
+
+    } catch (error) {
+      if (error instanceof Error) {
+        console.error("From: SignUp Form", error.message)
+        toast.error(`Filed to Sign Up, reason: ${error.message}`)
+      }
+
+    }
   };
 
   return (

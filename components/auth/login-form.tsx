@@ -6,9 +6,18 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { SignInFormFields } from "@/assets/formFields";
 import { FormInput } from "@/components/form-input";
 import LogoSVG from "@/assets/logo";
-import { signIn } from "next-auth/react";
+import { signIn, useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 
 export default function LoginForm() {
+  const router = useRouter()
+  const { data } = useSession()
+
+  useEffect(() => {
+    if (data?.user) router.push("/dashboard")
+  }, [data])
+
   const {
     register,
     handleSubmit,
@@ -30,8 +39,10 @@ export default function LoginForm() {
       <div className="translate-x-[3.1rem] scale-125 pb-5">
         <LogoSVG />
       </div>
-      <h2 className="text-3xl font-bold">Create your account</h2>
-      <p className="pb-3 text-sm font-semibold text-black/60">Enter your details to create your account</p>
+      <h2 className="text-3xl font-bold">Get Started</h2>
+      <p className="pb-3 text-sm font-semibold text-black/60">
+        Welcome back, Enter your credentials to sign in
+      </p>
 
       <div className="space-y-3 pb-3">
         {SignInFormFields.map((item) => (
