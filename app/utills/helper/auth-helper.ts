@@ -11,14 +11,14 @@ export const authOptions: NextAuthOptions = {
         password: { label: "Password", type: "password" },
       },
       async authorize(credentials) {
-        console.log({ credentials });
+        // console.log({ credentials });
         const res = await fetch("http://localhost:3000/api/sign-in", {
           method: "POST",
           body: JSON.stringify(credentials),
           headers: { "Content-Type": "application/json" },
         });
         const user = await res.json();
-        console.log({ user });
+        // console.log({ user });
 
         if (res.ok && user) {
           return user;
@@ -47,22 +47,26 @@ export const authOptions: NextAuthOptions = {
       if (!!account?.access_token && user.email) {
         const res = await fetch("http://localhost:3000/api/sign-in", {
           method: "POST",
-          body: JSON.stringify({ email: user.email, provider: account?.provider, access_token: account?.access_token }),
+          body: JSON.stringify({
+            email: user.email,
+            provider: account?.provider,
+            access_token: account?.access_token,
+          }),
           headers: { "Content-Type": "application/json" },
         });
         const result = await res.json();
-        console.log({ result });
+        // console.log({ result });
         token.accessToken = result.access_token;
       }
-      console.log({ token });
+      // console.log({ token });
       return token;
     },
     async redirect({ url, baseUrl }) {
-      console.log({ url, baseUrl });
+      // console.log({ url, baseUrl });
       return "/dashboard";
     },
     async session({ session, token }) {
-      console.log({ token });
+      // console.log({ token });
       session.accessToken = token.accessToken;
       return { ...session, name: "fardin" };
     },

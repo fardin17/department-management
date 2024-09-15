@@ -24,16 +24,11 @@ export default function SignUpForm() {
   });
 
   const onSubmit = (data: SignUpSchemaType) => {
-<<<<<<< HEAD:components/sign-up-form.tsx
     signIn("credentials", {
       email: data?.email,
       password: data?.password,
       callbackUrl: "/dashboard",
     });
-=======
-    // signIn("credentials", { email: data?.email, password: data?.password, callbackUrl: "/dashboard" });
-    console.log("submitting");
->>>>>>> a4578bd8a8c53798942b7ef9b269fd6610879dd4:components/auth/sign-up-form.tsx
 
     fetch("/api/sign-up", {
       method: "POST",
