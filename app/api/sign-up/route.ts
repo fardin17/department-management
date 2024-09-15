@@ -1,4 +1,5 @@
 import type { DBUserType, Database } from "@/_data/type";
+import { hashPassword } from "@/app/utils/helper/bcrypt";
 import { SignUpSchema } from "@/schema/authSchema";
 import { NextResponse } from "next/server";
 
@@ -25,6 +26,9 @@ export async function POST(req: Request) {
   try {
     const { email, name, password, terms } = validatedUserInfo.data;
 
+    // hashing the raw password with bcryptjs
+    const hashedPassword = await hashPassword(password)
+
     const newUserData: DBUserType = {
       id: crypto.randomUUID(),
       email: email,
@@ -33,8 +37,7 @@ export async function POST(req: Request) {
       terms: terms,
       // TODO: 
       type: "student",
-      // TODO: Encrypt password
-      password: password,
+      password: hashedPassword,
       image: null
     }
 

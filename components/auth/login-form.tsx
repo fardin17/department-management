@@ -6,9 +6,18 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { SignInFormFields } from "@/assets/formFields";
 import { FormInput } from "@/components/form-input";
 import LogoSVG from "@/assets/logo";
-import { signIn } from "next-auth/react";
+import { signIn, useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 
 export default function LoginForm() {
+  const router = useRouter()
+  const { data } = useSession()
+
+  useEffect(() => {
+    if (data?.user) router.push("/dashboard")
+  }, [data])
+
   const {
     register,
     handleSubmit,

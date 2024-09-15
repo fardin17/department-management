@@ -10,13 +10,33 @@
       "image": "https://lh3.googleusercontent.com/a/ACg8ocIbVlek6uuRjnS4oOk9r2-pgWG49VbW5w--9_8kp41VTteTxDc=s96-c"
     },
     {
-      "id": "604e61cf-bdc9-4cd7-964f-9edf74fe7049",
+      "id": "b2c5b23d-00ca-4e9b-b765-53551516fce9",
       "email": "topuroy143333@gmail.com",
       "name": "Topu Roy",
       "provider": "credentials",
       "terms": true,
       "type": "student",
-      "password": "topuroy143333@gmail.com",
+      "password": "$2a$15$YFTPIgH0/pacqPLb/bewyOyRGGRjBkclapFSgS7N6V3gk7c11xBMu",
+      "image": null
+    },
+    {
+      "id": "8ec8cf50-5f35-4026-a5ec-9a4bc7564acf",
+      "email": "abc1@gmail.com",
+      "name": "Topu Roy",
+      "provider": "credentials",
+      "terms": true,
+      "type": "student",
+      "password": "abc1@gmail.com",
+      "image": null
+    },
+    {
+      "id": "12a7e51e-01fa-4b34-b6ad-96e48fd33baa",
+      "email": "abcd@gmail.com",
+      "name": "Topu Roy",
+      "provider": "credentials",
+      "terms": true,
+      "type": "student",
+      "password": "$2a$15$WCynHYZCuycVFiUXRIXRJ.Q1avgKnQdoW2G.8xW9IR1hJmeUjXYw2",
       "image": null
     }
   ],

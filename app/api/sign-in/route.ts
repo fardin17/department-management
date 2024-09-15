@@ -1,4 +1,5 @@
 import { Database, DBUserType } from "@/_data/type";
+import { comparePasswords } from "@/app/utils/helper/bcrypt";
 import { NextResponse } from "next/server";
 import { z } from "zod";
 
@@ -84,14 +85,18 @@ export async function POST(req: Request) {
 
   // Specific to credentials provider
   if (checkUserAvailable) {
-    if (checkUserAvailable.password === validatedData.data.password) {
+    const isPasswordCorrect = await comparePasswords(validatedData.data.password!, checkUserAvailable.password!);
+    console.log(isPasswordCorrect)
+    if (isPasswordCorrect) {
       return NextResponse.json({
         email: validatedData.data.email,
         name: validatedData.data.name,
         password: validatedData.data.password
       }, { status: 200 });
+    } else {
+      console.log("not correct")
     }
   }
 
-  return NextResponse.json({ message: "User is not authenticated!" }, { status: 401 });
+  return NextResponse.json({ message: "User not found!" }, { status: 404 })
 }
