@@ -2,7 +2,7 @@
 import AuthCarousel from "@/components/carousel";
 import GoogleButton from "@/components/google-button";
 import Link from "next/link";
-import SignUpForm from "@/components/sign-up-form";
+import SignUpForm from "@/components/auth/sign-up-form";
 import { signIn } from "next-auth/react";
 
 export default function SignUpPage() {
