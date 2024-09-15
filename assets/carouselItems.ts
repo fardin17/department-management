@@ -1,5 +1,9 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
+//@ts-ignore
 import ImageOne from "@/assets/images/doctor-examining-patient-clinic-illustrated.png";
+//@ts-ignore
 import ImageTwo from "@/assets/images/group-medical-staff-carrying-health-related-icons.png";
+//@ts-ignore
 import ImageThree from "@/assets/images/scientists-working-concept.png";
 
 export const CarouselItems = [

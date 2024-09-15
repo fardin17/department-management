@@ -1,4 +1,4 @@
-import { NextAuthOptions } from "next-auth";
+import { getServerSession, NextAuthOptions } from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
 import CredentialsProvider from "next-auth/providers/credentials";
 
@@ -47,7 +47,11 @@ export const authOptions: NextAuthOptions = {
       if (!!account?.access_token && user.email) {
         const res = await fetch("http://localhost:3000/api/sign-in", {
           method: "POST",
-          body: JSON.stringify({ email: user.email, provider: account?.provider, access_token: account?.access_token }),
+          body: JSON.stringify({
+            email: user.email,
+            provider: account?.provider,
+            access_token: account?.access_token,
+          }),
           headers: { "Content-Type": "application/json" },
         });
         const result = await res.json();
@@ -68,3 +72,5 @@ export const authOptions: NextAuthOptions = {
     },
   },
 };
+
+export const getServerAuthSession = () => getServerSession(authOptions);

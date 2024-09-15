@@ -1,6 +1,8 @@
 import Image from "next/image";
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 import google from "@/assets/images/google.png";
-import { cn } from "@/app/utills/helper/global-helper";
+import { cn } from "@/app/utils/helper/global-helper";
 
 export default function GoogleButton({ className }: { className?: string }) {
   return (
