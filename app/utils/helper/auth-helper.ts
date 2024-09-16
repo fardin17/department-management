@@ -1,8 +1,8 @@
 import { getServerSession, NextAuthOptions } from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
 import CredentialsProvider from "next-auth/providers/credentials";
-import { SignInAPIBody } from "@/app/api/sign-in/route";
 import { DEFAULT_FALLBACK_IMAGE_URL } from "@/assets/constants";
+import { SignInAPIBody } from "@/app/api/types/auth";
 
 export const authOptions: NextAuthOptions = {
   providers: [
@@ -20,8 +20,8 @@ export const authOptions: NextAuthOptions = {
         const reqBody: SignInAPIBody = {
           provider: "credentials",
           email: credentials.email,
-          password: credentials.password
-        }
+          password: credentials.password,
+        };
 
         const res = await fetch("http://localhost:3000/api/sign-in", {
           method: "POST",
@@ -60,7 +60,7 @@ export const authOptions: NextAuthOptions = {
           provider: "google",
           email: user.email!,
           name: user.name!,
-          image: user.image ?? DEFAULT_FALLBACK_IMAGE_URL
+          image: user.image ?? DEFAULT_FALLBACK_IMAGE_URL,
         };
 
         const res = await fetch("http://localhost:3000/api/sign-in", {
@@ -81,23 +81,6 @@ export const authOptions: NextAuthOptions = {
       if (user) {
         token.id = user.id;
       }
-
-      // if (!!account?.access_token && user.email) {
-      //   const res = await fetch("http://localhost:3000/api/sign-in", {
-      //     method: "POST",
-      //     body: JSON.stringify({
-      //       email: user.email,
-      //       provider: account?.provider,
-      //       access_token: account?.access_token,
-      //     }),
-      //     headers: { "Content-Type": "application/json" },
-      //   });
-      //   const result = await res.json();
-      //   console.log({ result });
-      //   token.accessToken = result.access_token;
-      // }
-
-      // console.log({ token });
       return token;
     },
     async redirect() {

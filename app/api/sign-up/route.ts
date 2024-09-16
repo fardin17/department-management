@@ -5,30 +5,19 @@ import { NextResponse } from "next/server";
 
 export async function POST(req: Request) {
   const body = await req.json();
-  if (!body)
-    return NextResponse.json({ message: "No data received." }, { status: 400 });
+  if (!body) return NextResponse.json({ message: "No data received." }, { status: 400 });
 
   // Validating the data
   const validatedUserInfo = SignUpSchema.safeParse(body);
-  if (validatedUserInfo.error)
-    return NextResponse.json(
-      { message: "Validation error by zod" },
-      { status: 400 }
-    );
+  if (validatedUserInfo.error) return NextResponse.json({ message: "Validation error by zod" }, { status: 400 });
 
   // Database call
   const userResponse = await fetch("http://localhost:4000/users");
   const allUsers = (await userResponse.json()) as Database["users"];
 
-  const checkUserAvailable = allUsers.find(
-    (item) => item.email === validatedUserInfo.data.email
-  );
+  const checkUserAvailable = allUsers.find((item) => item.email === validatedUserInfo.data.email);
 
-  if (checkUserAvailable)
-    return NextResponse.json(
-      { message: "User is already exists" },
-      { status: 402 }
-    );
+  if (checkUserAvailable) return NextResponse.json({ message: "User is already exists" }, { status: 402 });
 
   try {
     const { email, name, password, terms } = validatedUserInfo.data;
@@ -57,16 +46,27 @@ export async function POST(req: Request) {
     const result = await response.json();
     console.log("From sign up route:", { result });
 
+    const response2 = await fetch("http://localhost:4000/teachers", {
+      method: "POST",
+      body: JSON.stringify({
+        id: newUserData?.id,
+        name,
+        department: "",
+        chapter: [],
+        notes: [],
+      }),
+      headers: { "Content-Type": "application/json" },
+    });
+    const result2 = await response2.json();
+    console.log({ result2 });
+
     if (response.ok) {
       return NextResponse.json({ result }, { status: 200 });
     }
   } catch (error) {
     if (error instanceof Error) {
       console.error("from sign-up route:", error.stack);
-      return NextResponse.json(
-        { message: "Failed to save user data" },
-        { status: 500 }
-      );
+      return NextResponse.json({ message: "Failed to save user data" }, { status: 500 });
     }
   }
 }

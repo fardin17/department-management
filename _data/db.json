@@ -38,7 +38,54 @@
       "type": "student",
       "password": "$2a$15$WCynHYZCuycVFiUXRIXRJ.Q1avgKnQdoW2G.8xW9IR1hJmeUjXYw2",
       "image": null
+    },
+    {
+      "id": "6583b712-3e7b-4626-b860-ca0ebc208b2f",
+      "email": "fardin785@gmail.com",
+      "name": "fardin islam",
+      "provider": "google",
+      "terms": true,
+      "type": null,
+      "image": "https://lh3.googleusercontent.com/a/ACg8ocKM6U_GP3Z2nyad3QSATbNY0mH5pjvhtHeUHztgtstBp1FJN5-o=s96-c"
+    },
+    {
+      "id": "74c90ad0-4eaf-4be3-86ed-3a953618dc7b",
+      "email": "fardin14@cse.pstu.ac.bd",
+      "name": "Fardin Islam",
+      "provider": "google",
+      "terms": true,
+      "type": null,
+      "image": "https://lh3.googleusercontent.com/a/ACg8ocLP-gjs_RqlW4Q--pTbfbcgMT3j20EvFPrhRUG-R9hrvo6yDCo=s96-c"
+    },
+    {
+      "id": "0c283efb-bc44-4645-a87b-d43b383034c9",
+      "email": "257-3@yopmail.com",
+      "name": "test 46",
+      "provider": "credentials",
+      "terms": true,
+      "type": "student",
+      "password": "$2a$10$HUciZW/L8yKxCY2kfH6vEOblZdvdQjzD3YDxxeafDZnrwglHNgqWK",
+      "image": null
+    },
+    {
+      "id": "fb5db223-2d01-478b-89bc-58a946ddbffd",
+      "email": "dev012@yopmail.com",
+      "name": "test 46",
+      "provider": "credentials",
+      "terms": true,
+      "type": "student",
+      "password": "$2a$10$8vhkyEpC.UtZcq/NBdhUQeK6kPFdI0BefFjeol.r5SW94maAKRivy",
+      "image": null
     }
   ],
-  "students": []
+  "students": [],
+  "teachers": [
+    {
+      "id": "fb5db223-2d01-478b-89bc-58a946ddbffd",
+      "name": "test 46",
+      "department": "",
+      "chapter": [{}],
+      "notes": []
+    }
+  ]
 }

@@ -1,25 +1,22 @@
+import { getServerAuthSession } from "@/app/utils/helper/auth-helper";
 import Sidebar from "@/components/ui/sidebar";
 import AddLessonButton from "@/components/ui/teacher-dashboard/addLessonButton";
 import dynamic from "next/dynamic";
 
-const ClassesCompletionChart = dynamic(
-  () => import("@/components/ui/teacher-dashboard/classesCompletionChart"),
-  { ssr: false }
-);
-const ProgressChart = dynamic(
-  () => import("@/components/ui/teacher-dashboard/progressChart"),
-  { ssr: false }
-);
-const NotesList = dynamic(
-  () => import("@/components/ui/teacher-dashboard/subjecNote"),
-  { ssr: false }
-);
-const TeacherCourseCard = dynamic(
-  () => import("@/components/ui/teacher-dashboard/teacherCourseCard"),
-  { ssr: false }
-);
+const ClassesCompletionChart = dynamic(() => import("@/components/ui/teacher-dashboard/classesCompletionChart"), {
+  ssr: false,
+});
+
+const ProgressChart = dynamic(() => import("@/components/ui/teacher-dashboard/progressChart"), { ssr: false });
+
+const NotesList = dynamic(() => import("@/components/ui/teacher-dashboard/subjecNote"), { ssr: false });
+
+const TeacherCourseCard = dynamic(() => import("@/components/ui/teacher-dashboard/teacherCourseCard"), { ssr: false });
 
 const TeacherDashboard = () => {
+  const session = getServerAuthSession();
+  console.log({ session });
+
   return (
     <section className="bg-gray-100 min-h-screen flex justify-center items-center">
       <div className="flex h-[90vh] max-w-[1400px] w-full mx-auto rounded-lg shadow-lg">
