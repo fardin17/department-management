@@ -1,8 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import Logout from "../../components/logout";
-import { getServerSession } from "next-auth";
-import { authOptions } from "../utills/helper/auth-helper";
+import { getServerAuthSession } from "../utils/helper/auth-helper";
 import { redirect } from "next/navigation";
 
 export default async function layout({
@@ -10,7 +9,7 @@ export default async function layout({
 }: {
   children: React.ReactNode;
 }) {
-  const session = await getServerSession(authOptions);
+  const session = getServerAuthSession();
   // console.log({ session });
   if (!session) redirect("/auth/login");
   return (

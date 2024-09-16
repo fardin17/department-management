@@ -1,11 +1,15 @@
-"use client";
-import AuthCarousel from "@/components/carousel";
-import GoogleButton from "@/components/google-button";
 import Link from "next/link";
 import SignUpForm from "@/components/auth/sign-up-form";
-import { signIn } from "next-auth/react";
+import AuthCarousel from "@/components/carousel";
+import GoogleButton from "@/components/google-button";
+import { getServerAuthSession } from "@/app/utils/helper/auth-helper";
+import { redirect } from "next/navigation";
 
-export default function SignUpPage() {
+export default async function SignUpPage() {
+  const session = await getServerAuthSession();
+
+  if (session) return redirect("/dashboard");
+
   return (
     <main className="flex min-h-[100dvh] items-center justify-center bg-slate-200 px-2 xl:px-0">
       <div className="my-14 grid w-full max-w-[90rem] grid-cols-1 overflow-hidden rounded-3xl bg-transparent shadow-md lg:h-[90dvh] lg:grid-cols-2">
@@ -18,17 +22,14 @@ export default function SignUpPage() {
             <div className="h-0.5 w-full bg-black/50"></div>
           </div>
 
-          <div
-            onClick={() => signIn("google")}
-            className="mx-auto w-full max-w-md"
-          >
+          <div className="mx-auto w-full max-w-md">
             <GoogleButton className="w-full" />
           </div>
 
           <p className="absolute bottom-[3%] left-[50%] -translate-x-[50%] text-xs font-semibold text-black/70 lg:bottom-[2%]">
             Already have an account?{" "}
             <Link
-              href={"/sign-in"}
+              href={"/auth/login"}
               className="text-sm font-bold text-indigo-600"
             >
               Sign in

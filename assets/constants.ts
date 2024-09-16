@@ -1,0 +1,1 @@
+export const DEFAULT_FALLBACK_IMAGE_URL = "https://utfs.io/f/I6eCagmlE0TeBLfvkxXPOznQR0JpHuCNs5ZtKfkdvyehWxSq";

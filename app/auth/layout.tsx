@@ -1,6 +1,6 @@
 import React from "react";
 import { getServerSession } from "next-auth";
-import { authOptions } from "../utills/helper/auth-helper";
+import { authOptions } from "../utils/helper/auth-helper";
 import { redirect } from "next/navigation";
 import Link from "next/link";
 
