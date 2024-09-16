@@ -7,18 +7,9 @@ import { SignUpFormFields } from "@/assets/formFields";
 import { FormInput, FormInputErrorText } from "@/components/form-input";
 import LogoSVG from "@/assets/logo";
 import toast from "react-hot-toast";
-import { useSession } from "next-auth/react";
-import { useEffect } from "react";
-import { useRouter } from "next/navigation";
+import { signIn } from "next-auth/react";
 
 export default function SignUpForm() {
-  const router = useRouter();
-  const { data } = useSession();
-
-  useEffect(() => {
-    if (data?.user) router.push("/dashboard");
-  }, [data]);
-
   const {
     register,
     handleSubmit,
@@ -32,29 +23,24 @@ export default function SignUpForm() {
     },
   });
 
-  const onSubmit = async (data: SignUpSchemaType) => {
-    try {
-      const response = await fetch("http://localhost:3000/api/sign-up", {
-        method: "POST",
-        body: JSON.stringify(data),
-        headers: { "Content-Type": "application/json" },
-      });
+  const onSubmit = (data: SignUpSchemaType) => {
+    signIn("credentials", {
+      email: data?.email,
+      password: data?.password,
+      callbackUrl: "/dashboard",
+    });
 
-      if (response.ok) {
-        router.push("/auth/login");
-
-        toast.success(JSON.stringify("Account created successfully."));
-      }
-
-      if (!response.ok) {
-        toast.error(JSON.stringify("Sign Up failed"));
-      }
-    } catch (error) {
-      if (error instanceof Error) {
-        console.error("From: SignUp Form", error.message);
-        toast.error(`Filed to Sign Up, reason: ${error.message}`);
-      }
-    }
+    toast.success(
+      JSON.stringify({
+        className: "bg-slate-950 border-0",
+        title: "You submitted the following values:",
+        description: (
+          <pre className="mt-2 w-[340px] rounded-md bg-gray-800 p-4">
+            <code className="text-white">{JSON.stringify(data, null, 2)}</code>
+          </pre>
+        ),
+      })
+    );
   };
 
   return (
