@@ -4,7 +4,7 @@ import React from "react";
 import Logout from "../../../components/logout";
 import { redirect } from "next/navigation";
 import { getServerSession } from "next-auth";
-import { authOptions } from "../../utills/helper/auth-helper";
+import { authOptions } from "../../utils/helper/auth-helper";
 
 const Page = async () => {
   return (
