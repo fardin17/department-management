@@ -1,73 +1,6 @@
 {
   "users": [
     {
-      "id": "1bb01f5b-44dd-47ec-9415-f85232bbfcf2",
-      "email": "topuroy.dev@gmail.com",
-      "name": "Topu Roy",
-      "provider": "google",
-      "terms": true,
-      "type": null,
-      "image": "https://lh3.googleusercontent.com/a/ACg8ocIbVlek6uuRjnS4oOk9r2-pgWG49VbW5w--9_8kp41VTteTxDc=s96-c"
-    },
-    {
-      "id": "b2c5b23d-00ca-4e9b-b765-53551516fce9",
-      "email": "topuroy143333@gmail.com",
-      "name": "Topu Roy",
-      "provider": "credentials",
-      "terms": true,
-      "type": "student",
-      "password": "$2a$15$YFTPIgH0/pacqPLb/bewyOyRGGRjBkclapFSgS7N6V3gk7c11xBMu",
-      "image": null
-    },
-    {
-      "id": "8ec8cf50-5f35-4026-a5ec-9a4bc7564acf",
-      "email": "abc1@gmail.com",
-      "name": "Topu Roy",
-      "provider": "credentials",
-      "terms": true,
-      "type": "student",
-      "password": "abc1@gmail.com",
-      "image": null
-    },
-    {
-      "id": "12a7e51e-01fa-4b34-b6ad-96e48fd33baa",
-      "email": "abcd@gmail.com",
-      "name": "Topu Roy",
-      "provider": "credentials",
-      "terms": true,
-      "type": "student",
-      "password": "$2a$15$WCynHYZCuycVFiUXRIXRJ.Q1avgKnQdoW2G.8xW9IR1hJmeUjXYw2",
-      "image": null
-    },
-    {
-      "id": "6583b712-3e7b-4626-b860-ca0ebc208b2f",
-      "email": "fardin785@gmail.com",
-      "name": "fardin islam",
-      "provider": "google",
-      "terms": true,
-      "type": null,
-      "image": "https://lh3.googleusercontent.com/a/ACg8ocKM6U_GP3Z2nyad3QSATbNY0mH5pjvhtHeUHztgtstBp1FJN5-o=s96-c"
-    },
-    {
-      "id": "74c90ad0-4eaf-4be3-86ed-3a953618dc7b",
-      "email": "fardin14@cse.pstu.ac.bd",
-      "name": "Fardin Islam",
-      "provider": "google",
-      "terms": true,
-      "type": null,
-      "image": "https://lh3.googleusercontent.com/a/ACg8ocLP-gjs_RqlW4Q--pTbfbcgMT3j20EvFPrhRUG-R9hrvo6yDCo=s96-c"
-    },
-    {
-      "id": "0c283efb-bc44-4645-a87b-d43b383034c9",
-      "email": "257-3@yopmail.com",
-      "name": "test 46",
-      "provider": "credentials",
-      "terms": true,
-      "type": "student",
-      "password": "$2a$10$HUciZW/L8yKxCY2kfH6vEOblZdvdQjzD3YDxxeafDZnrwglHNgqWK",
-      "image": null
-    },
-    {
       "id": "fb5db223-2d01-478b-89bc-58a946ddbffd",
       "email": "dev012@yopmail.com",
       "name": "test 46",
@@ -76,6 +9,15 @@
       "type": "student",
       "password": "$2a$10$8vhkyEpC.UtZcq/NBdhUQeK6kPFdI0BefFjeol.r5SW94maAKRivy",
       "image": null
+    },
+    {
+      "id": "b508e0f4-50da-47c8-a8f7-50f055a2c5ba",
+      "email": "topuroy143333@gmail.com",
+      "name": "Bigoy Roy",
+      "provider": "google",
+      "terms": true,
+      "type": null,
+      "image": "https://lh3.googleusercontent.com/a/ACg8ocIk66D-ObWI0fJf0zG7rk-hQMaK7ZFI9EaXhqe9kApUy6F-8fA=s96-c"
     }
   ],
   "students": [],
@@ -84,7 +26,9 @@
       "id": "fb5db223-2d01-478b-89bc-58a946ddbffd",
       "name": "test 46",
       "department": "",
-      "chapter": [{}],
+      "chapter": [
+        {}
+      ],
       "notes": []
     }
   ]

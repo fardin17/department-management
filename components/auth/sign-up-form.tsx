@@ -43,11 +43,12 @@ export default function SignUpForm() {
       if (response.ok) {
         router.push("/auth/login");
 
-        toast.success(JSON.stringify("Account created successfully."));
+        toast.success("Account created successfully.");
       }
 
       if (!response.ok) {
-        toast.error(JSON.stringify("Sign Up failed"));
+        const data = await response.json()
+        toast.error(`${data.message}`);
       }
     } catch (error) {
       if (error instanceof Error) {

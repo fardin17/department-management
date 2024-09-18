@@ -17,7 +17,7 @@ export async function POST(req: Request) {
 
   const checkUserAvailable = allUsers.find((item) => item.email === validatedUserInfo.data.email);
 
-  if (checkUserAvailable) return NextResponse.json({ message: "User is already exists" }, { status: 402 });
+  if (checkUserAvailable) return NextResponse.json({ message: "User already exists" }, { status: 402 });
 
   try {
     const { email, name, password, terms } = validatedUserInfo.data;

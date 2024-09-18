@@ -43,6 +43,12 @@ export async function POST(req: Request) {
         return NextResponse.json({ message: "Failed to create user." }, { status: 500 });
       }
     }
+
+    return NextResponse.json({
+      email: validatedData.data.email,
+      name: validatedData.data.name,
+      password: validatedData.data.password
+    }, { status: 200 })
   }
 
   // Specific to credentials provider
