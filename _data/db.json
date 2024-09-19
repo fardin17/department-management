@@ -1,34 +1,38 @@
 {
   "users": [
     {
-      "id": "fb5db223-2d01-478b-89bc-58a946ddbffd",
-      "email": "dev012@yopmail.com",
-      "name": "test 46",
-      "provider": "credentials",
-      "terms": true,
-      "type": "student",
-      "password": "$2a$10$8vhkyEpC.UtZcq/NBdhUQeK6kPFdI0BefFjeol.r5SW94maAKRivy",
-      "image": null
-    },
-    {
-      "id": "b508e0f4-50da-47c8-a8f7-50f055a2c5ba",
+      "id": "5af1c9b6-8dbe-4356-a160-95f7a570b217",
       "email": "topuroy143333@gmail.com",
       "name": "Bigoy Roy",
       "provider": "google",
       "terms": true,
-      "type": null,
+      "type": "student",
       "image": "https://lh3.googleusercontent.com/a/ACg8ocIk66D-ObWI0fJf0zG7rk-hQMaK7ZFI9EaXhqe9kApUy6F-8fA=s96-c"
+    },
+    {
+      "id": "b77f7659-2678-41dc-bc60-06a4803c3507",
+      "email": "topu@gmail.com",
+      "name": "topu roy",
+      "provider": "credentials",
+      "terms": true,
+      "type": "teacher",
+      "password": "$2a$10$Lj7BiaeNmUGhK.oLeXN//Op9C136ai7QLdynIK1YO09GER55JJIMG",
+      "image": null
     }
   ],
-  "students": [],
+  "students": [
+    {
+      "id": "5af1c9b6-8dbe-4356-a160-95f7a570b217",
+      "department": null,
+      "name": "Bigoy Roy"
+    }
+  ],
   "teachers": [
     {
-      "id": "fb5db223-2d01-478b-89bc-58a946ddbffd",
-      "name": "test 46",
-      "department": "",
-      "chapter": [
-        {}
-      ],
+      "id": "b77f7659-2678-41dc-bc60-06a4803c3507",
+      "department": null,
+      "name": "topu roy",
+      "chapter": [],
       "notes": []
     }
   ]

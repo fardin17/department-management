@@ -31,8 +31,7 @@ export async function POST(req: Request) {
       name: name,
       provider: "credentials",
       terms: terms,
-      // TODO:
-      type: "student",
+      type: null,
       password: hashedPassword,
       image: null,
     };
@@ -45,20 +44,6 @@ export async function POST(req: Request) {
 
     const result = await response.json();
     console.log("From sign up route:", { result });
-
-    const response2 = await fetch("http://localhost:4000/teachers", {
-      method: "POST",
-      body: JSON.stringify({
-        id: newUserData?.id,
-        name,
-        department: "",
-        chapter: [],
-        notes: [],
-      }),
-      headers: { "Content-Type": "application/json" },
-    });
-    const result2 = await response2.json();
-    console.log({ result2 });
 
     if (response.ok) {
       return NextResponse.json({ result }, { status: 200 });

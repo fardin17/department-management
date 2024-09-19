@@ -9,9 +9,10 @@ export default async function layout({
 }: {
   children: React.ReactNode;
 }) {
-  const session = getServerAuthSession();
-  // console.log({ session });
+  const session = await getServerAuthSession();
+
   if (!session) redirect("/auth/login");
+
   return (
     <div>
       <div className="bg-sky-500">
