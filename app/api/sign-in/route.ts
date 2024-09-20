@@ -1,67 +1,64 @@
-import { Database, DBUserType } from "@/_data/type";
-import { comparePasswords } from "@/app/utils/helper/bcrypt";
 import { NextResponse } from "next/server";
+import axios from "axios";
+import { DBUserType } from "@/_data/type";
 import { SignInAPISchema } from "../schema/auth";
+import { comparePasswords, generateAccessToken } from "@/app/utils/helper/validation-helper";
+import { fetchAllUsers } from "@/app/utils/helper/api-helper";
 
 export async function POST(req: Request) {
-  const body = await req.json();
-  if (!body) return NextResponse.json({ message: "No data received." }, { status: 400 });
+  try {
+    const body = await req.json();
 
-  // Validating the body
-  const validatedData = SignInAPISchema.safeParse(body);
-  if (validatedData.error) return NextResponse.json({ message: "Invalid data received." }, { status: 400 });
+    // Check if the body is empty
+    if (!body) return NextResponse.json({ message: "No data received." }, { status: 400 });
 
-  // Database call
-  const userResponse = await fetch("http://localhost:4000/users");
-  const allUsers = (await userResponse.json()) as Database["users"];
+    // Validate request body
+    const { success, data, error } = SignInAPISchema.safeParse(body);
+    if (!success) return NextResponse.json({ message: "Invalid data received.", error }, { status: 400 });
 
-  const checkUserAvailable = allUsers.find((user) => user.email === validatedData.data.email);
+    const { email, provider, name, password, image } = data;
 
-  // Specific to google provider
-  if (validatedData.data.provider === "google") {
-    if (!checkUserAvailable) {
-      const { email, provider, name, image } = validatedData.data;
-      const newUserData: DBUserType = {
-        id: crypto.randomUUID(),
-        email: email,
-        name: name!,
-        provider: provider,
-        terms: true,
-        type: null,
-        image: image!,
-      };
+    const allUsers = await fetchAllUsers();
+    const existingUser = allUsers.find((user) => user.email === email);
 
-      try {
-        const res = await fetch("http://localhost:4000/users", {
-          method: "POST",
-          body: JSON.stringify(newUserData),
-          headers: { "Content-Type": "application/json" },
-        });
+    if (provider === "google") {
+      // Handle Google provider
+      if (!existingUser) {
+        const newUser: DBUserType = {
+          id: crypto.randomUUID(),
+          email,
+          name: name!,
+          provider,
+          terms: true,
+          type: null,
+          image: image ?? null,
+        };
 
-        if (res.ok) return NextResponse.json({ email, name, password: validatedData.data.password }, { status: 200 });
-      } catch (error) {
-        return NextResponse.json({ message: "Failed to create user." }, { status: 500 });
+        try {
+          const { data: createdUser } = await axios.post(`http://localhost:4000/users`, newUser);
+          const accessToken = generateAccessToken(createdUser);
+
+          return NextResponse.json({ email: createdUser.email, name: createdUser.name, accessToken }, { status: 200 });
+        } catch (error) {
+          return NextResponse.json({ message: "Failed to create user." }, { status: 500 });
+        }
+      } else {
+        const accessToken = generateAccessToken(existingUser);
+        return NextResponse.json({ email: existingUser.email, name: existingUser.name, accessToken }, { status: 200 });
+      }
+    } else if (provider === "credentials" && existingUser) {
+      // Handle credentials provider
+      const isPasswordCorrect = await comparePasswords(password!, existingUser.password!);
+      if (isPasswordCorrect) {
+        const accessToken = generateAccessToken(existingUser);
+        return NextResponse.json({ email: existingUser.email, name: existingUser.name, accessToken }, { status: 200 });
+      } else {
+        return NextResponse.json({ message: "Incorrect password." }, { status: 401 });
       }
     }
-  }
 
-  // Specific to credentials provider
-  if (checkUserAvailable) {
-    const isPasswordCorrect = await comparePasswords(validatedData.data.password!, checkUserAvailable.password!);
-    console.log(isPasswordCorrect);
-    if (isPasswordCorrect) {
-      return NextResponse.json(
-        {
-          email: validatedData.data.email,
-          name: validatedData.data.name,
-          password: validatedData.data.password,
-        },
-        { status: 200 }
-      );
-    } else {
-      console.log("not correct");
-    }
+    return NextResponse.json({ message: "User not found or invalid provider." }, { status: 404 });
+  } catch (error) {
+    return NextResponse.json({ message: "Internal Server Error", error: (error as Error).message }, { status: 500 });
   }
-
-  return NextResponse.json({ message: "User not found!" }, { status: 404 });
 }

@@ -1,8 +1,11 @@
+import { cookies } from "next/headers";
 import { getServerSession, NextAuthOptions } from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
 import CredentialsProvider from "next-auth/providers/credentials";
 import { DEFAULT_FALLBACK_IMAGE_URL } from "@/assets/constants";
 import { SignInAPIBody } from "@/app/api/types/auth";
+
+import axios from "axios";
 
 export const authOptions: NextAuthOptions = {
   providers: [
@@ -23,16 +26,9 @@ export const authOptions: NextAuthOptions = {
           password: credentials.password,
         };
 
-        const res = await fetch("http://localhost:3000/api/sign-in", {
-          method: "POST",
-          body: JSON.stringify(reqBody),
-          headers: { "Content-Type": "application/json" },
-        });
+        const { data } = await axios.post("http://localhost:3000/api/sign-in", reqBody);
 
-        const user = await res.json();
-        console.log("from authorize call", user);
-
-        if (res.ok && user) return user;
+        if (data) return data;
 
         return null;
       },
@@ -54,7 +50,14 @@ export const authOptions: NextAuthOptions = {
   },
   session: { strategy: "jwt" },
   callbacks: {
-    async signIn({ user, account }) {
+    async signIn({ user }) {
+      return user?.email ? true : "/auth/login";
+    },
+    async jwt({ token, user, account }) {
+      if (user?.accessToken) {
+        token.id = user.id;
+        token.accessToken = user?.accessToken;
+      }
       if (account?.provider === "google") {
         const reqBody: SignInAPIBody = {
           provider: "google",
@@ -63,36 +66,22 @@ export const authOptions: NextAuthOptions = {
           image: user.image ?? DEFAULT_FALLBACK_IMAGE_URL,
         };
 
-        const res = await fetch("http://localhost:3000/api/sign-in", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(reqBody),
-        });
+        const { data } = await axios.post("http://localhost:3000/api/sign-in", reqBody);
 
-        if (!res.ok) {
+        if (data) {
+          token.accessToken = data.accessToken;
+        } else {
           console.error("Failed to save Google user data");
-          return false; // Prevents sign in if saving user data fails
         }
-      }
-
-      return user?.email ? true : "/auth/login";
-    },
-    async jwt({ token, user }) {
-      if (user) {
-        token.id = user.id;
       }
       return token;
     },
-    async redirect() {
-      // console.log({ url, baseUrl });
-      return "/dashboard";
-    },
     async session({ session, token }) {
-      // console.log({ token });
       session.accessToken = token.accessToken;
-      return { ...session, name: "fardin" };
+      return { ...session };
     },
   },
+  useSecureCookies: false,
 };
 
 export const getServerAuthSession = () => getServerSession(authOptions);

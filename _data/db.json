@@ -40,24 +40,6 @@
       "image": null
     },
     {
-      "id": "6583b712-3e7b-4626-b860-ca0ebc208b2f",
-      "email": "fardin785@gmail.com",
-      "name": "fardin islam",
-      "provider": "google",
-      "terms": true,
-      "type": null,
-      "image": "https://lh3.googleusercontent.com/a/ACg8ocKM6U_GP3Z2nyad3QSATbNY0mH5pjvhtHeUHztgtstBp1FJN5-o=s96-c"
-    },
-    {
-      "id": "74c90ad0-4eaf-4be3-86ed-3a953618dc7b",
-      "email": "fardin14@cse.pstu.ac.bd",
-      "name": "Fardin Islam",
-      "provider": "google",
-      "terms": true,
-      "type": null,
-      "image": "https://lh3.googleusercontent.com/a/ACg8ocLP-gjs_RqlW4Q--pTbfbcgMT3j20EvFPrhRUG-R9hrvo6yDCo=s96-c"
-    },
-    {
       "id": "0c283efb-bc44-4645-a87b-d43b383034c9",
       "email": "257-3@yopmail.com",
       "name": "test 46",
@@ -76,6 +58,34 @@
       "type": "student",
       "password": "$2a$10$8vhkyEpC.UtZcq/NBdhUQeK6kPFdI0BefFjeol.r5SW94maAKRivy",
       "image": null
+    },
+    {
+      "id": "317f7585-de29-4b12-a77b-7cbef44a6975",
+      "email": "fardin785@gmail.com",
+      "name": "fardin islam",
+      "provider": "google",
+      "terms": true,
+      "type": null,
+      "image": "https://lh3.googleusercontent.com/a/ACg8ocKM6U_GP3Z2nyad3QSATbNY0mH5pjvhtHeUHztgtstBp1FJN5-o=s96-c"
+    },
+    {
+      "id": "31572bbb-f588-48d2-b28f-e2275f23abdc",
+      "email": "fardin.islam@vivasoftltd.com",
+      "name": "Fardin islam",
+      "provider": "google",
+      "terms": true,
+      "type": null,
+      "image": "https://lh3.googleusercontent.com/a/ACg8ocIyeQPfR4s-FRcUrwX99TFsENFe6LlvSoRr-xQAEw5K02ogMGVC=s96-c"
+    },
+    {
+      "id": "2abe3fe0-637a-450f-afc4-7cfe5dce8a3e",
+      "email": "01@yopmail.com",
+      "name": "test 46",
+      "provider": "credentials",
+      "terms": true,
+      "type": "student",
+      "password": "$2a$10$3FGRXh2shdoLj1ztfOcrRev/UHnn6jzbk/.ya5FUiUMcwJQEXffva",
+      "image": null
     }
   ],
   "students": [],
@@ -84,7 +94,25 @@
       "id": "fb5db223-2d01-478b-89bc-58a946ddbffd",
       "name": "test 46",
       "department": "",
-      "chapter": [{}],
+      "chapter": [
+        {}
+      ],
+      "notes": []
+    },
+    {
+      "name": "chapter 1",
+      "description": "this is a description",
+      "id": "2abe3fe0-637a-450f-afc4-7cfe5dce8a3e",
+      "chapter": [
+        {
+          "name": "chapter 1",
+          "description": "this is a description"
+        },
+        {
+          "name": "chapter 1",
+          "description": "this is a description"
+        }
+      ],
       "notes": []
     }
   ]

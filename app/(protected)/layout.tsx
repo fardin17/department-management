@@ -4,13 +4,8 @@ import Logout from "../../components/logout";
 import { getServerAuthSession } from "../utils/helper/auth-helper";
 import { redirect } from "next/navigation";
 
-export default async function layout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
-  const session = getServerAuthSession();
-  // console.log({ session });
+export default async function layout({ children }: { children: React.ReactNode }) {
+  const session = await getServerAuthSession();
   if (!session) redirect("/auth/login");
   return (
     <div>

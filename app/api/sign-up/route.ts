@@ -1,72 +1,61 @@
-import type { DBUserType, Database } from "@/_data/type";
-import { hashPassword } from "@/app/utils/helper/bcrypt";
+import { DBUserType } from "@/_data/type";
+import { addTeacher, addUser, fetchAllUsers } from "@/app/utils/helper/api-helper";
+import { hashPassword } from "@/app/utils/helper/validation-helper";
 import { SignUpSchema } from "@/schema/authSchema";
 import { NextResponse } from "next/server";
 
 export async function POST(req: Request) {
-  const body = await req.json();
-  if (!body) return NextResponse.json({ message: "No data received." }, { status: 400 });
-
-  // Validating the data
-  const validatedUserInfo = SignUpSchema.safeParse(body);
-  if (validatedUserInfo.error) return NextResponse.json({ message: "Validation error by zod" }, { status: 400 });
-
-  // Database call
-  const userResponse = await fetch("http://localhost:4000/users");
-  const allUsers = (await userResponse.json()) as Database["users"];
-
-  const checkUserAvailable = allUsers.find((item) => item.email === validatedUserInfo.data.email);
-
-  if (checkUserAvailable) return NextResponse.json({ message: "User is already exists" }, { status: 402 });
-
   try {
-    const { email, name, password, terms } = validatedUserInfo.data;
+    const body = await req.json();
+    if (!body) {
+      return NextResponse.json({ message: "No data received." }, { status: 400 });
+    }
 
-    // hashing the raw password with bcryptjs
+    // Validating the data
+    const { data: validatedUserInfo, error } = SignUpSchema.safeParse(body);
+    if (error) {
+      return NextResponse.json({ message: "Validation error by zod", details: error.errors }, { status: 400 });
+    }
+
+    const { email, name, password, terms } = validatedUserInfo;
+
+    // Check if the user already exists
+    const allUsers = await fetchAllUsers();
+    const existingUser = allUsers.find((user) => user.email === email);
+
+    if (existingUser) {
+      return NextResponse.json({ message: "User already exists." }, { status: 409 });
+    }
+
+    // Hash the password and prepare new user data
     const hashedPassword = await hashPassword(password);
-
-    const newUserData: DBUserType = {
+    const newUser: DBUserType = {
       id: crypto.randomUUID(),
-      email: email,
-      name: name,
+      email,
+      name,
       provider: "credentials",
-      terms: terms,
-      // TODO:
-      type: "student",
+      terms,
+      type: "teacher",
       password: hashedPassword,
       image: null,
     };
 
-    const response = await fetch("http://localhost:4000/users", {
-      method: "POST",
-      body: JSON.stringify(newUserData),
-      headers: { "Content-Type": "application/json" },
-    });
+    const createdUser = await addUser(newUser);
 
-    const result = await response.json();
-    console.log("From sign up route:", { result });
+    const newTeacher = {
+      id: createdUser.id,
+      name,
+      department: "",
+      chapter: [],
+      notes: [],
+    };
 
-    const response2 = await fetch("http://localhost:4000/teachers", {
-      method: "POST",
-      body: JSON.stringify({
-        id: newUserData?.id,
-        name,
-        department: "",
-        chapter: [],
-        notes: [],
-      }),
-      headers: { "Content-Type": "application/json" },
-    });
-    const result2 = await response2.json();
-    console.log({ result2 });
+    await addTeacher(newTeacher);
 
-    if (response.ok) {
-      return NextResponse.json({ result }, { status: 200 });
-    }
+    // If both operations are successful, return a success response
+    return NextResponse.json({ message: "User  created successfully.", createdUser }, { status: 201 });
   } catch (error) {
-    if (error instanceof Error) {
-      console.error("from sign-up route:", error.stack);
-      return NextResponse.json({ message: "Failed to save user data" }, { status: 500 });
-    }
+    console.error("Error in sign-up route:", error instanceof Error ? error.stack : error);
+    return NextResponse.json({ message: "An error occurred during the sign-up process." }, { status: 500 });
   }
 }

@@ -2,19 +2,31 @@
 
 import React, { useState } from "react";
 import { FaTimes } from "react-icons/fa";
+import axios from "axios";
+import Cookies from "js-cookie";
 
 const AddLessonButton = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
-
+  const accessToken = Cookies.get("access-token");
+  const handleSubmit = (e: any) => {
+    e.preventDefault();
+    axios.post("/api/chapter", {
+      body: JSON.stringify({
+        name: "chapter 1",
+        description: "this is a description",
+      }),
+      headers: {
+        authorization: `Bearer ${accessToken}`,
+        "Content-Type": "application/json",
+      },
+    });
+  };
   return (
     <div>
-      <button
-        onClick={openModal}
-        className="bg-[#518CF4] text-white py-1 px-5 rounded-lg"
-      >
+      <button onClick={openModal} className="bg-[#518CF4] text-white py-1 px-5 rounded-lg">
         <span className="text-xl">+</span> Add Lessons
       </button>
 
@@ -28,75 +40,38 @@ const AddLessonButton = () => {
                 <FaTimes className="text-gray-600" />
               </button>
             </div>
-            <form>
+            <form onSubmit={handleSubmit}>
               <div className="mb-4">
-                <label
-                  className="block text-sm font-medium mb-2"
-                  htmlFor="image"
-                >
+                <label className="block text-sm font-medium mb-2" htmlFor="image">
                   Image URL
                 </label>
-                <input
-                  type="text"
-                  id="image"
-                  className="w-full p-2 border border-gray-300 rounded"
-                />
+                <input type="text" id="image" className="w-full p-2 border border-gray-300 rounded" />
               </div>
               <div className="mb-4">
-                <label
-                  className="block text-sm font-medium mb-2"
-                  htmlFor="chapter"
-                >
+                <label className="block text-sm font-medium mb-2" htmlFor="chapter">
                   Chapter
                 </label>
-                <input
-                  type="text"
-                  id="chapter"
-                  className="w-full p-2 border border-gray-300 rounded"
-                />
+                <input type="text" id="chapter" className="w-full p-2 border border-gray-300 rounded" />
               </div>
               <div className="mb-4">
-                <label
-                  className="block text-sm font-medium mb-2"
-                  htmlFor="topic"
-                >
+                <label className="block text-sm font-medium mb-2" htmlFor="topic">
                   Topic
                 </label>
-                <input
-                  type="text"
-                  id="topic"
-                  className="w-full p-2 border border-gray-300 rounded"
-                />
+                <input type="text" id="topic" className="w-full p-2 border border-gray-300 rounded" />
               </div>
               <div className="mb-4">
-                <label
-                  className="block text-sm font-medium mb-2"
-                  htmlFor="duration"
-                >
+                <label className="block text-sm font-medium mb-2" htmlFor="duration">
                   Duration
                 </label>
-                <input
-                  type="text"
-                  id="duration"
-                  className="w-full p-2 border border-gray-300 rounded"
-                />
+                <input type="text" id="duration" className="w-full p-2 border border-gray-300 rounded" />
               </div>
               <div className="mb-4">
-                <label
-                  className="block text-sm font-medium mb-2"
-                  htmlFor="lesson"
-                >
+                <label className="block text-sm font-medium mb-2" htmlFor="lesson">
                   Lesson
                 </label>
-                <textarea
-                  id="lesson"
-                  className="w-full p-2 border border-gray-300 rounded"
-                ></textarea>
+                <textarea id="lesson" className="w-full p-2 border border-gray-300 rounded"></textarea>
               </div>
-              <button
-                type="submit"
-                className="bg-[#518CF4] text-white py-2 px-4 rounded-lg"
-              >
+              <button type="submit" className="bg-[#518CF4] text-white py-2 px-4 rounded-lg">
                 Submit
               </button>
             </form>

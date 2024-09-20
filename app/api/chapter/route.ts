@@ -1,25 +1,26 @@
-import { Database } from "@/_data/type";
-import { type NextRequest } from "next/server";
+import { NextResponse } from "next/server";
+import { NextApiRequest } from "next";
+import { validateToken } from "@/app/utils/helper/validation-helper";
+import { fetchTeacherById, updateTeacherData } from "@/app/utils/helper/api-helper";
 
-export async function POST(req: NextRequest) {
-  const data = await req.json();
-  const { ...chapterInfo, email } = data;
+export async function POST(req: NextApiRequest) {
+  try {
+    const { id } = validateToken(req);
+    const chapterInfo = req.body;
 
-  const userResponse = await fetch("http://localhost:4000/users");
-  const allUsers = (await userResponse.json()) as Database["users"];
-  const userId = allUsers.find((user) => user.email === email)?.id;
+    const teacherData = await fetchTeacherById(id);
 
-  const teacherResponse = await fetch("http://localhost:4000/teachers");
+    if (!teacherData) {
+      return NextResponse.json({ message: "User info not found!" }, { status: 404 });
+    } else {
+      teacherData.chapter = [...teacherData.chapter, chapterInfo];
 
-  const allTeachers = (await teacherResponse.json()) as any;
+      await updateTeacherData(teacherData.id, teacherData);
 
-  const teacherInfo = allTeachers.find((teacher) => teacher?.id === userId);
-
-  const updatedInfo = { ...teacherInfo, chapter: [...teacherInfo.chapter, chapterInfo] };
-
-  const response2 = await fetch("http://localhost:4000/teachers", {
-    method: "POST",
-    body: JSON.stringify(updatedInfo),
-    headers: { "Content-Type": "application/json" },
-  });
+      return NextResponse.json({ message: "Successfully updated!" });
+    }
+  } catch (error) {
+    console.error("Error updating teacher data:", error);
+    return NextResponse.json({ message: "Failed to update teacher data." }, { status: 500 });
+  }
 }
