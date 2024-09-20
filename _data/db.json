@@ -95,7 +95,32 @@
       "name": "test 46",
       "department": "",
       "chapter": [
-        {}
+        {
+          "id": 3,
+          "title": "Chapter 1",
+          "lessons": [
+            "Design thinking process",
+            "Origin of design",
+            "What is design science",
+            "History of design thinking",
+            "Design sequence significance"
+          ],
+          "duration": "50 Min",
+          "lessonCount": 5
+        },
+        {
+          "id": 3,
+          "title": "Chapter 100",
+          "lessons": [
+            "Design thinking process",
+            "Origin of design",
+            "What is design science",
+            "History of design thinking",
+            "Design sequence significance"
+          ],
+          "duration": "50 Min",
+          "lessonCount": 5
+        }
       ],
       "notes": []
     },

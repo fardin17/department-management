@@ -5,8 +5,8 @@ import Image from "next/image";
 
 import { useEffect, useState } from "react";
 import Autoplay from "embla-carousel-autoplay";
-import { CarouselItems } from "@/assets/carouselItems";
 import { cn } from "@/app/utils/helper/global-helper";
+import { CarouselItems } from "@/assets/carouselItems";
 
 export default function AuthCarousel() {
   const [api, setApi] = useState<CarouselApi>();

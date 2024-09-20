@@ -4,25 +4,39 @@ import React, { useState } from "react";
 import { FaTimes } from "react-icons/fa";
 import axios from "axios";
 import Cookies from "js-cookie";
+import { usePostChapterMutation } from "@/app/store/api-slice";
 
 const AddLessonButton = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
-  const accessToken = Cookies.get("access-token");
+  const [postChapter] = usePostChapterMutation();
   const handleSubmit = (e: any) => {
     e.preventDefault();
-    axios.post("/api/chapter", {
-      body: JSON.stringify({
-        name: "chapter 1",
-        description: "this is a description",
-      }),
-      headers: {
-        authorization: `Bearer ${accessToken}`,
-        "Content-Type": "application/json",
-      },
-    });
+
+    const accessToken = Cookies.get("access-token");
+    console.log({ accessToken });
+    const chapterPayload = {
+      id: 3,
+      title: "Chapter 100",
+      lessons: [
+        "Design thinking process",
+        "Origin of design",
+        "What is design science",
+        "History of design thinking",
+        "Design sequence significance",
+      ],
+      duration: "50 Min",
+      lessonCount: 5,
+    };
+    postChapter({ ...chapterPayload });
+    // axios.post("/api/chapter", chapterPayload, {
+    //   headers: {
+    //     authorization: `Bearer ${accessToken}`,
+    //     "Content-Type": "application/json",
+    //   },
+    // });
   };
   return (
     <div>

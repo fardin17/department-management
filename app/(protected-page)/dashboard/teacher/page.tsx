@@ -1,25 +1,23 @@
-"use client";
-import Sidebar from "@/components/ui/sidebar";
-import AddLessonButton from "@/components/ui/teacher-dashboard/addLessonButton";
-import { useSession } from "next-auth/react";
+import { getServerAuthSession } from "@/app/utils/helper/auth-helper";
+import Sidebar from "@/app/components/ui/sidebar";
+import AddLessonButton from "@/app/components/ui/teacher-dashboard/add-lesson-button";
 import dynamic from "next/dynamic";
-import Cookies from "js-cookie";
 
-const ClassesCompletionChart = dynamic(() => import("@/components/ui/teacher-dashboard/classesCompletionChart"), {
+const ClassesCompletionChart = dynamic(() => import("@/app/components/ui/teacher-dashboard/classes-completion-chart"), {
   ssr: false,
 });
 
-const ProgressChart = dynamic(() => import("@/components/ui/teacher-dashboard/progressChart"), { ssr: false });
+const ProgressChart = dynamic(() => import("@/app/components/ui/teacher-dashboard/progress-chart"), { ssr: false });
 
-const NotesList = dynamic(() => import("@/components/ui/teacher-dashboard/subjecNote"), { ssr: false });
+const NotesList = dynamic(() => import("@/app/components/ui/teacher-dashboard/subject-note"), { ssr: false });
 
-const TeacherCourseCard = dynamic(() => import("@/components/ui/teacher-dashboard/teacherCourseCard"), { ssr: false });
+const TeacherCourseCard = dynamic(() => import("@/app/components/ui/teacher-dashboard/teacher-course-card"), {
+  ssr: false,
+});
 
 const TeacherDashboard = () => {
-  const { data: session } = useSession();
-  if (!!session?.accessToken) {
-    Cookies.set("access-token", session?.accessToken);
-  }
+  const session = getServerAuthSession();
+  console.log({ session });
 
   return (
     <section className="bg-gray-100 min-h-screen flex justify-center items-center">

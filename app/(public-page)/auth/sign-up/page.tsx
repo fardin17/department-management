@@ -1,7 +1,7 @@
 import Link from "next/link";
-import SignUpForm from "@/components/auth/sign-up-form";
-import AuthCarousel from "@/components/carousel";
-import GoogleButton from "@/components/google-button";
+import SignUpForm from "@/app/components/auth/sign-up-form";
+import AuthCarousel from "@/app/components/carousel";
+import GoogleButton from "@/app/components/google-button";
 import { getServerAuthSession } from "@/app/utils/helper/auth-helper";
 import { redirect } from "next/navigation";
 
@@ -28,10 +28,7 @@ export default async function SignUpPage() {
 
           <p className="absolute bottom-[3%] left-[50%] -translate-x-[50%] text-xs font-semibold text-black/70 lg:bottom-[2%]">
             Already have an account?{" "}
-            <Link
-              href={"/auth/login"}
-              className="text-sm font-bold text-indigo-600"
-            >
+            <Link href={"/auth/login"} className="text-sm font-bold text-indigo-600">
               Sign in
             </Link>
           </p>

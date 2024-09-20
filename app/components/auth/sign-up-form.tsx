@@ -1,7 +1,7 @@
 "use client";
 
 import { useForm } from "react-hook-form";
-import { SignUpSchema, type SignUpSchemaType } from "@/app/schema/authSchema";
+import { SignUpSchema, type SignUpSchemaType } from "@/schema/authSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { SignUpFormFields } from "@/assets/formFields";
 import { FormInput, FormInputErrorText } from "@/app/components/form-input";

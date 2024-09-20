@@ -26,7 +26,7 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const session = await getServerAuthSession()
+  const session = await getServerAuthSession();
 
   return (
     <html lang="en">
@@ -35,6 +35,7 @@ export default async function RootLayout({
           {children}
           <Toaster />
         </AuthSessionProvider>
+        ,
       </body>
     </html>
   );

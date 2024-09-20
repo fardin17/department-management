@@ -1,7 +1,7 @@
 import Link from "next/link";
-import LoginForm from "@/components/auth/login-form";
-import AuthCarousel from "@/components/carousel";
-import GoogleButton from "@/components/google-button";
+import LoginForm from "@/app/components/auth/login-form";
+import AuthCarousel from "@/app/components/carousel";
+import GoogleButton from "@/app/components/google-button";
 
 export default function SignInPage() {
   return (
@@ -22,10 +22,7 @@ export default function SignInPage() {
 
           <p className="absolute bottom-[3%] left-[50%] -translate-x-[50%] text-xs font-semibold text-black/70 lg:bottom-[2%]">
             Don&apos;t have an account?{" "}
-            <Link
-              href={"/auth/sign-up"}
-              className="text-sm font-bold text-indigo-600"
-            >
+            <Link href={"/auth/sign-up"} className="text-sm font-bold text-indigo-600">
               Sign Up
             </Link>
           </p>

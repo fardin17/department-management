@@ -1,23 +1,18 @@
 import { NextResponse } from "next/server";
 import { NextApiRequest } from "next";
 import { validateToken } from "@/app/utils/helper/validation-helper";
-import { fetchTeacherById, updateTeacherData } from "@/app/utils/helper/api-helper";
+import { fetchTeacherById } from "@/app/utils/helper/api-helper";
 
-export async function POST(req: NextApiRequest) {
+export async function GET(req: NextApiRequest) {
   try {
     const { id } = validateToken(req);
-    const chapterInfo = await req.json();
-
+    console.log({ id });
     const teacherData = await fetchTeacherById(id);
-
+    console.log({ teacherData });
     if (!teacherData) {
       return NextResponse.json({ message: "User info not found!" }, { status: 404 });
     } else {
-      teacherData.chapter = [...teacherData.chapter, chapterInfo];
-
-      await updateTeacherData(teacherData.id, teacherData);
-
-      return NextResponse.json({ message: "Successfully updated!" });
+      return NextResponse.json({ ...teacherData });
     }
   } catch (error) {
     console.error("Error updating teacher data:", error);

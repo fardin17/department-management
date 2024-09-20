@@ -10,8 +10,11 @@ export type DBUserType = {
 };
 
 export type ChapterType = {
-  name: string;
-  description: string;
+  id: number;
+  title: string;
+  lessons: string[];
+  duration: string;
+  lessonCount: number;
 };
 
 export type NotesType = {

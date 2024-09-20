@@ -1,23 +1,15 @@
-import Sidebar from "@/components/ui/sidebar";
-import RequestButton from "@/components/ui/student-dashboard/requestButton";
+import Sidebar from "@/app/components/ui/sidebar";
+import RequestButton from "@/app/components/ui/student-dashboard/requestButton";
 import dynamic from "next/dynamic";
 
-const MarksDistribution = dynamic(
-  () => import("@/components/ui/student-dashboard/marksDistribution"),
-  { ssr: false }
-);
-const TeacherList = dynamic(
-  () => import("@/components/ui/student-dashboard/teacherList"),
-  { ssr: false }
-);
-const DownloadNotes = dynamic(
-  () => import("@/components/ui/student-dashboard/downloadNotes"),
-  { ssr: false }
-);
-const StudentCourseCard = dynamic(
-  () => import("@/components/ui/student-dashboard/studentCourseCard"),
-  { ssr: false }
-);
+const MarksDistribution = dynamic(() => import("@/app/components/ui/student-dashboard/marksDistribution"), {
+  ssr: false,
+});
+const TeacherList = dynamic(() => import("@/app/components/ui/student-dashboard/teacherList"), { ssr: false });
+const DownloadNotes = dynamic(() => import("@/app/components/ui/student-dashboard/downloadNotes"), { ssr: false });
+const StudentCourseCard = dynamic(() => import("@/app/components/ui/student-dashboard/studentCourseCard"), {
+  ssr: false,
+});
 
 const StudentDashboard = () => {
   return (

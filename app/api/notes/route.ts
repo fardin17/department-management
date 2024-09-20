@@ -6,14 +6,14 @@ import { fetchTeacherById, updateTeacherData } from "@/app/utils/helper/api-help
 export async function POST(req: NextApiRequest) {
   try {
     const { id } = validateToken(req);
-    const chapterInfo = await req.json();
+    const noteInfo = await req.json();
 
     const teacherData = await fetchTeacherById(id);
 
     if (!teacherData) {
       return NextResponse.json({ message: "User info not found!" }, { status: 404 });
     } else {
-      teacherData.chapter = [...teacherData.chapter, chapterInfo];
+      teacherData.notes = [...teacherData.chapter, noteInfo];
 
       await updateTeacherData(teacherData.id, teacherData);
 

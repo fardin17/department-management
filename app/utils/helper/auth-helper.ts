@@ -1,4 +1,3 @@
-import { cookies } from "next/headers";
 import { getServerSession, NextAuthOptions } from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
 import CredentialsProvider from "next-auth/providers/credentials";
