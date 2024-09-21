@@ -21,5 +21,5 @@ export default async function Dashboard() {
     );
   }
 
-  if (targetUser?.type) redirect(`/dashboard/${targetUser?.type}`);
+  if (targetUser?.type) return redirect(`/dashboard/${targetUser?.type}`);
 }
