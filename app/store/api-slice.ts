@@ -16,15 +16,22 @@ export const apiSlice = createApi({
       return headers;
     },
   }),
-  tagTypes: ["Teachers"],
+  tagTypes: ["Teachers", "Students"],
+  refetchOnFocus: true,
+  refetchOnReconnect: true,
+
   endpoints: (builder) => ({
     getTeacherInfo: builder.query({
       query: () => `/teacher`,
       providesTags: ["Teachers"],
     }),
+    getStudentInfo: builder.query({
+      query: () => `/student`,
+      providesTags: ["Students"],
+    }),
     postChapter: builder.mutation<ChapterType, ChapterType>({
       query: (chapter) => ({
-        url: `/chapter`,
+        url: `/teacher/chapter`,
         method: "POST",
         body: chapter,
       }),
@@ -32,7 +39,7 @@ export const apiSlice = createApi({
     }),
     postNote: builder.mutation({
       query: (note) => ({
-        url: `/notes`,
+        url: `/teacher/notes`,
         method: "POST",
         body: note,
       }),
@@ -40,6 +47,6 @@ export const apiSlice = createApi({
     }),
   }),
 });
-export const { useGetTeacherInfoQuery, usePostChapterMutation, usePostNoteMutation } = apiSlice;
+export const { useGetTeacherInfoQuery, useGetStudentInfoQuery, usePostChapterMutation, usePostNoteMutation } = apiSlice;
 
 export default apiSlice.reducer;

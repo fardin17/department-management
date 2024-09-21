@@ -19,7 +19,8 @@ export const comparePasswords = async (plainPassword: string, hashedPassword: st
 const JWT_SECRET_KEY = "this_is_a_secret_key";
 
 export const validateToken = (req: NextApiRequest): TokenPayload => {
-  //@ts-ignore
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  //@ts-expect-error
   const authHeader = req?.headers?.get("authorization");
   console.log({ authHeader });
   if (!authHeader) throw new Error("Token not provided");

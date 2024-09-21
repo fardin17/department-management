@@ -41,8 +41,8 @@
     },
     {
       "id": "0c283efb-bc44-4645-a87b-d43b383034c9",
-      "email": "257-3@yopmail.com",
-      "name": "test 46",
+      "email": "test1@yopmail.com",
+      "name": "Fardin islam",
       "provider": "credentials",
       "terms": true,
       "type": "student",
@@ -88,7 +88,50 @@
       "image": null
     }
   ],
-  "students": [],
+  "students": [
+    {
+      "id": "0c283efb-bc44-4645-a87b-d43b383034c9",
+      "name": "Fardin islam",
+      "teachers": [
+        {
+          "name": "Teacher 1",
+          "department": "CSE"
+        },
+        {
+          "name": "Teacher 2",
+          "department": "EEE"
+        }
+      ],
+      "subjects": [
+        {
+          "id": 1,
+          "name": "Computer Science",
+          "description": "this is a description",
+          "mark": 100
+        },
+        {
+          "id": 2,
+          "name": "C Programming",
+          "description": "this is a description",
+          "mark": 100
+        }
+      ],
+      "notes": [
+        {
+          "title": "How to become a good communicator?",
+          "subject": "Business Management",
+          "date": "21-12-2021",
+          "time": "8:30PM"
+        },
+        {
+          "title": "Strategy Rules",
+          "subject": "Business Management",
+          "date": "21-12-2021",
+          "time": "8:30PM"
+        }
+      ]
+    }
+  ],
   "teachers": [
     {
       "id": "fb5db223-2d01-478b-89bc-58a946ddbffd",
@@ -120,9 +163,54 @@
           ],
           "duration": "50 Min",
           "lessonCount": 5
+        },
+        {
+          "id": 3,
+          "title": "Chapter 100",
+          "lessons": [
+            "Design thinking process",
+            "Origin of design",
+            "What is design science",
+            "History of design thinking",
+            "Design sequence significance"
+          ],
+          "duration": "50 Min",
+          "lessonCount": 5
+        },
+        {
+          "id": 3,
+          "title": "Chapter 100",
+          "lessons": [
+            "Design thinking process",
+            "Origin of design",
+            "What is design science",
+            "History of design thinking",
+            "Design sequence significance"
+          ],
+          "duration": "50 Min",
+          "lessonCount": 5
         }
       ],
-      "notes": []
+      "notes": [
+        {
+          "title": "How to become a good communicator?",
+          "subject": "Business Management",
+          "date": "21-12-2021",
+          "time": "8:30PM"
+        },
+        {
+          "title": "Strategy Rules",
+          "subject": "Business Management",
+          "date": "21-12-2021",
+          "time": "8:30PM"
+        },
+        {
+          "title": "New notes",
+          "subject": "React",
+          "date": "21-12-2021",
+          "time": "8:30PM"
+        }
+      ]
     },
     {
       "name": "chapter 1",

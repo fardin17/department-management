@@ -1,38 +1,22 @@
 import { FaCalendarDay, FaClock, FaDownload } from "react-icons/fa";
 
-const notes = [
-  {
-    title: "How to become a good communicator?",
-    subject: "Business Management",
-    date: "21-12-2021",
-    time: "8:30PM",
-  },
-  {
-    title: "Strategy Rules",
-    subject: "Business Management",
-    date: "21-12-2021",
-    time: "8:30PM",
-  },
-  {
-    title: "Origin of design",
-    subject: "Business Management",
-    date: "21-12-2021",
-    time: "8:30PM",
-  },
-];
-
-const DownloadNotes = () => {
+interface NoteListProps {
+  notes: {
+    title: string;
+    subject: string;
+    date: string;
+    time: string;
+  }[];
+}
+const DownloadNotes = ({ notes }: NoteListProps) => {
   return (
     <div className="p-4 bg-white text-black">
       <div className="flex items-center mb-4">
         <div className="w-4 h-8 rounded-md bg-[#F8C7B0] mr-4"></div>
         <h1 className="text-sm font-bold">Download Subject Notes</h1>
       </div>
-      {notes.map((note, index) => (
-        <div
-          key={index}
-          className="p-4 mb-2 rounded-lg shadow-sm border-l-4 border-[#F8C7B0] flex items-start"
-        >
+      {notes?.map((note, index) => (
+        <div key={index} className="p-4 mb-2 rounded-lg shadow-sm border-l-4 border-[#F8C7B0] flex items-start">
           <div className="flex-1">
             <h3 className="font-bold text-base">{note.title}</h3>
             <p className="text-sm text-gray-600">{note.subject}</p>

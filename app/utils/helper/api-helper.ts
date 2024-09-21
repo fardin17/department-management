@@ -1,5 +1,5 @@
 import axios from "axios";
-import { Database, DBUserType, TeacherType } from "@/_data/type";
+import { Database, DBUserType, StudentType, TeacherType } from "@/_data/type";
 
 const SERVER_URL = process.env.SERVER_URL;
 
@@ -29,6 +29,11 @@ export async function fetchUserById(userId: string): Promise<DBUserType> {
 
 export async function fetchTeacherById(teacherId: string): Promise<TeacherType> {
   const { data } = await axios.get<TeacherType>(`${SERVER_URL}/teachers/${teacherId}`);
+  return data;
+}
+
+export async function fetchStudentById(studentId: string): Promise<StudentType> {
+  const { data } = await axios.get<StudentType>(`${SERVER_URL}/students/${studentId}`);
   return data;
 }
 

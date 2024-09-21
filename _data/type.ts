@@ -16,7 +16,12 @@ export type ChapterType = {
   duration: string;
   lessonCount: number;
 };
-
+export type SubjectType = {
+  id: number;
+  name: string;
+  description: string;
+  mark: number;
+};
 export type NotesType = {
   name: string;
   description: string;
@@ -27,6 +32,16 @@ export type TeacherType = {
   name: string;
   department: string;
   chapter: ChapterType[];
+  notes: NotesType[];
+};
+export type StudentType = {
+  id: string;
+  name: string;
+  teachers: {
+    name: string;
+    department: string;
+  }[];
+  subjects: SubjectType[];
   notes: NotesType[];
 };
 

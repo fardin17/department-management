@@ -13,7 +13,7 @@ export async function POST(req: NextApiRequest) {
     if (!teacherData) {
       return NextResponse.json({ message: "User info not found!" }, { status: 404 });
     } else {
-      teacherData.notes = [...teacherData.chapter, noteInfo];
+      teacherData.notes = [...teacherData.notes, noteInfo];
 
       await updateTeacherData(teacherData.id, teacherData);
 
