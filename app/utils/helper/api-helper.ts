@@ -1,13 +1,59 @@
 import axios from "axios";
-import { Database, DBUserType, TeacherType } from "@/_data/type";
+import { Database, DBUserType, StudentType, TeacherType } from "@/_data/type";
 
-const SERVER_URL = process.env.SERVER_URL;
+export const SERVER_URL = process.env.SERVER_URL;
 
 export async function addUser(newUser: DBUserType): Promise<DBUserType> {
   const { data } = await axios.post<DBUserType>(`${SERVER_URL}/users`, newUser, {
     headers: { "Content-Type": "application/json" },
   });
   return data;
+}
+
+export async function updateUserType({ type, email }: { email: string, type: DBUserType['type'] }): Promise<DBUserType | undefined> {
+
+  // Get the user data
+  const userResponse = await fetch("http://localhost:4000/users");
+  const allUsers = (await userResponse.json()) as Database["users"];
+
+  const user = allUsers.find(
+    (user) => user.email === email
+  );
+
+  // Generates data based on type
+  function generateBody() {
+
+    if (!user) return;
+
+    if (type === "student") {
+      return {
+        id: user.id,
+        department: "",
+        name: user.name
+      } satisfies StudentType
+    }
+
+    else if (type === "teacher") {
+      return {
+        id: user.id,
+        chapter: [],
+        department: "",
+        name: user.name,
+        notes: []
+      } satisfies TeacherType
+    }
+  }
+
+  const [res1, res2] = await Promise.all([
+    axios.patch<DBUserType>(`http://localhost:4000/users/${user?.id}`, { type }, {
+      headers: { "Content-Type": "application/json" },
+    }),
+    axios.post(`http://localhost:4000/${type === "student" ? "students" : "teachers"}`, generateBody(), {
+      headers: { "Content-Type": "application/json" },
+    })
+  ])
+
+  if (res1 && res2) return res1.data;
 }
 
 export async function addTeacher(newTeacher: Partial<TeacherType>): Promise<TeacherType> {

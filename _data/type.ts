@@ -5,7 +5,7 @@ export type DBUserType = {
   image: string | null;
   password?: string;
   terms: boolean;
-  type: "teacher" | "student" | "parent" | null;
+  type: "teacher" | "student" | null;
   provider: "google" | "credentials";
 };
 
@@ -30,9 +30,15 @@ export type TeacherType = {
   notes: NotesType[];
 };
 
+export type StudentType = {
+  id: string;
+  name: string;
+  department: string;
+};
+
 export type Database = {
   users: DBUserType[];
-  students: [];
+  students: StudentType[];
   teachers: TeacherType[];
 };
 
