@@ -10,15 +10,16 @@ export async function addUser(newUser: DBUserType): Promise<DBUserType> {
   return data;
 }
 
-export async function updateUserType({ type, email }: { email: string, type: DBUserType['type'] }): Promise<DBUserType | undefined> {
-
-  // Get the user data
-  const userResponse = await fetch("http://localhost:4000/users");
-  const allUsers = (await userResponse.json()) as Database["users"];
-
-  const user = allUsers.find(
+export async function getUserByEmail(email: string): Promise<DBUserType | undefined> {
+  console.log(SERVER_URL)
+  return (await axios.get<DBUserType[]>(`http://localhost:4000/users`)).data.find(
     (user) => user.email === email
   );
+}
+
+export async function updateUserType({ type, email }: { email: string, type: DBUserType['type'] }): Promise<DBUserType | undefined> {
+
+  const user = await getUserByEmail(email)
 
   // Generates data based on type
   function generateBody() {
@@ -28,8 +29,10 @@ export async function updateUserType({ type, email }: { email: string, type: DBU
     if (type === "student") {
       return {
         id: user.id,
-        department: "",
-        name: user.name
+        name: user.name,
+        notes: [],
+        subjects: [],
+        teachers: [],
       } satisfies StudentType
     }
 
@@ -75,6 +78,11 @@ export async function fetchUserById(userId: string): Promise<DBUserType> {
 
 export async function fetchTeacherById(teacherId: string): Promise<TeacherType> {
   const { data } = await axios.get<TeacherType>(`${SERVER_URL}/teachers/${teacherId}`);
+  return data;
+}
+
+export async function fetchStudentById(studentId: string): Promise<StudentType> {
+  const { data } = await axios.get<StudentType>(`${SERVER_URL}/students/${studentId}`);
   return data;
 }
 

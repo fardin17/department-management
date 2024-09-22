@@ -10,11 +10,18 @@ export type DBUserType = {
 };
 
 export type ChapterType = {
-  id: number;
+  id: string;
   title: string;
   lessons: string[];
   duration: string;
   lessonCount: number;
+};
+
+export type SubjectType = {
+  id: number;
+  name: string;
+  description: string;
+  mark: number;
 };
 
 export type NotesType = {
@@ -33,7 +40,12 @@ export type TeacherType = {
 export type StudentType = {
   id: string;
   name: string;
-  department: string;
+  teachers: {
+    name: string;
+    department: string;
+  }[];
+  subjects: SubjectType[];
+  notes: NotesType[];
 };
 
 export type Database = {

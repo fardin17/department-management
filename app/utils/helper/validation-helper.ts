@@ -1,7 +1,7 @@
-import { NextApiRequest } from "next";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import { DBUserType, TokenPayload } from "@/_data/type";
+import { NextRequest } from "next/server";
 
 const saltRounds = 10;
 
@@ -10,7 +10,7 @@ export const hashPassword = async (password: string): Promise<string> => {
   return hashedPassword;
 };
 
-//!The order of the args matters
+//* The order of the args matters
 export const comparePasswords = async (plainPassword: string, hashedPassword: string): Promise<boolean> => {
   const isMatch = await bcrypt.compare(plainPassword, hashedPassword);
   return isMatch;
@@ -18,15 +18,13 @@ export const comparePasswords = async (plainPassword: string, hashedPassword: st
 
 const JWT_SECRET_KEY = "this_is_a_secret_key";
 
-export const validateToken = (req: NextApiRequest): TokenPayload => {
-  //@ts-ignore
-  const authHeader = req?.headers?.get("authorization");
-  console.log({ authHeader });
+export const validateToken = (req: NextRequest): TokenPayload => {
+  const authHeader = req.headers.get("authorization");
   if (!authHeader) throw new Error("Token not provided");
 
   const token = authHeader.split(" ")[1];
-
   const decoded = jwt.verify(token, JWT_SECRET_KEY) as TokenPayload;
+
   return decoded;
 };
 

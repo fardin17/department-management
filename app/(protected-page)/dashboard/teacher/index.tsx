@@ -2,10 +2,11 @@
 
 import Sidebar from "@/app/components/ui/sidebar";
 import AddLessonButton from "@/app/components/ui/teacher-dashboard/add-lesson-button";
-import { useSession } from "next-auth/react";
+import { signOut } from "next-auth/react";
 import dynamic from "next/dynamic";
 import Cookies from "js-cookie";
 import { useGetTeacherInfoQuery } from "@/app/store/api-slice";
+import { useEffect, useState } from "react";
 
 const ClassesCompletionChart = dynamic(
   () =>
@@ -33,12 +34,35 @@ const TeacherCourseCard = dynamic(
 );
 
 const TeacherDashboard = () => {
-  const { data: session } = useSession();
-  if (!!session?.accessToken) {
-    Cookies.set("access-token", session?.accessToken);
-  }
-  const { data } = useGetTeacherInfoQuery({});
-  console.log({ data });
+  const [showTokenExpired, setShowTokenExpired] = useState(false);
+  const { data, error } = useGetTeacherInfoQuery({});
+
+  useEffect(() => {
+    if (error?.data?.message?.name === "TokenExpiredError") {
+      setShowTokenExpired(true);
+    }
+  }, [error]);
+
+  const renderExpiredModal = showTokenExpired && (
+    <div className="fixed inset-0 bg-gray-500 bg-opacity-50 flex justify-center items-center z-50">
+      <div className="bg-white p-6 rounded-lg shadow-lg w-1/3">
+        <div className="flex flex-col gap-20">
+          <h2 className="text-xl font-semibold text-center">
+            Your Session Expired
+          </h2>
+          <button
+            onClick={() => {
+              signOut();
+              Cookies.remove("access-token");
+            }}
+          >
+            Login
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+
   return (
     <section className="bg-gray-100 min-h-screen flex justify-center items-center">
       <div className="flex h-[90vh] max-w-[1400px] w-full mx-auto rounded-lg shadow-lg">
@@ -59,7 +83,7 @@ const TeacherDashboard = () => {
 
           {/* Course Card */}
           <div className="flex gap-2 mt-2">
-            {courses.map((course) => (
+            {data?.chapter.map((course) => (
               <TeacherCourseCard {...course} key={course.id} />
             ))}
           </div>
@@ -73,9 +97,10 @@ const TeacherDashboard = () => {
         <div className="w-72 p-6 space-y-4 rounded-r-lg overflow-y-auto">
           <ProgressChart />
 
-          <NotesList />
+          <NotesList notes={data?.notes} />
         </div>
       </div>
+      {renderExpiredModal}
     </section>
   );
 };

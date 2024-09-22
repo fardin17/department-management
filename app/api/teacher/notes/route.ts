@@ -1,9 +1,8 @@
-import { NextResponse } from "next/server";
-import { NextApiRequest } from "next";
+import { NextRequest, NextResponse } from "next/server";
 import { validateToken } from "@/app/utils/helper/validation-helper";
 import { fetchTeacherById, updateTeacherData } from "@/app/utils/helper/api-helper";
 
-export async function POST(req: NextApiRequest) {
+export async function POST(req: NextRequest) {
   try {
     const { id } = validateToken(req);
     const noteInfo = await req.json();
@@ -13,7 +12,7 @@ export async function POST(req: NextApiRequest) {
     if (!teacherData) {
       return NextResponse.json({ message: "User info not found!" }, { status: 404 });
     } else {
-      teacherData.notes = [...teacherData.chapter, noteInfo];
+      teacherData.notes = [...teacherData.notes, noteInfo];
 
       await updateTeacherData(teacherData.id, teacherData);
 

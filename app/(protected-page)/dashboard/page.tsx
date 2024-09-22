@@ -1,25 +1,23 @@
-import { Database } from "@/_data/type";
 import { getServerAuthSession } from "@/app/utils/helper/auth-helper";
-import { redirect } from "next/navigation";
+import TeacherDashboard from "./teacher";
+import StudentDashboard from "./student";
+import { getUserByEmail } from "@/app/utils/helper/api-helper";
 import SelectAccountType from "./selectAccountType";
+import { redirect } from "next/navigation";
 
-export default async function Dashboard() {
+const Dashboard = async () => {
   const session = await getServerAuthSession();
 
-  const userResponse = await fetch("http://localhost:4000/users");
-  const allUsers = (await userResponse.json()) as Database["users"];
+  if (!session?.user) return redirect("/auth/login");
 
-  const targetUser = allUsers.find(
-    (user) => user.email === session!.user.email
-  );
+  const user = await getUserByEmail(session.user.email);
 
-  if (targetUser?.type === null) {
-    return (
-      <div>
-        <SelectAccountType />
-      </div>
-    );
-  }
+  if (!user) redirect("/auth/login");
+  if (user.type === null) return <SelectAccountType />;
+  if (user.type == "teacher") return <TeacherDashboard />;
+  if (user.type == "student") return <StudentDashboard />;
 
-  if (targetUser?.type) return redirect(`/dashboard/${targetUser?.type}`);
-}
+  return null;
+};
+
+export default Dashboard;

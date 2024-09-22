@@ -1,17 +1,34 @@
+"use client";
+import { SubjectType } from "@/_data/type";
 import Sidebar from "@/app/components/ui/sidebar";
 import RequestButton from "@/app/components/ui/student-dashboard/requestButton";
+import { useGetStudentInfoQuery } from "@/app/store/api-slice";
 import dynamic from "next/dynamic";
 
-const MarksDistribution = dynamic(() => import("@/app/components/ui/student-dashboard/marksDistribution"), {
-  ssr: false,
-});
-const TeacherList = dynamic(() => import("@/app/components/ui/student-dashboard/teacherList"), { ssr: false });
-const DownloadNotes = dynamic(() => import("@/app/components/ui/student-dashboard/downloadNotes"), { ssr: false });
-const StudentCourseCard = dynamic(() => import("@/app/components/ui/student-dashboard/studentCourseCard"), {
-  ssr: false,
-});
+const MarksDistribution = dynamic(
+  () => import("@/app/components/ui/student-dashboard/marksDistribution"),
+  {
+    ssr: false,
+  }
+);
+const TeacherList = dynamic(
+  () => import("@/app/components/ui/student-dashboard/teacherList"),
+  { ssr: false }
+);
+const DownloadNotes = dynamic(
+  () => import("@/app/components/ui/student-dashboard/downloadNotes"),
+  { ssr: false }
+);
+const StudentCourseCard = dynamic(
+  () => import("@/app/components/ui/student-dashboard/studentCourseCard"),
+  {
+    ssr: false,
+  }
+);
 
 const StudentDashboard = () => {
+  const { data: studentInfo } = useGetStudentInfoQuery({});
+
   return (
     <section className="bg-gray-100 min-h-screen flex justify-center items-center">
       <div className="flex h-[90vh] max-w-[1400px] w-full mx-auto rounded-lg shadow-lg">
@@ -32,12 +49,9 @@ const StudentDashboard = () => {
 
           {/* Course Card */}
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mt-6">
-            <StudentCourseCard />
-            <StudentCourseCard />
-            <StudentCourseCard />
-            <StudentCourseCard />
-            <StudentCourseCard />
-            <StudentCourseCard />
+            {studentInfo?.subjects?.map((subject: SubjectType) => (
+              <StudentCourseCard {...subject} key={subject.id} />
+            ))}
           </div>
 
           <div>
@@ -47,9 +61,9 @@ const StudentDashboard = () => {
 
         {/* Right Sidebar */}
         <div className="w-72 p-6 space-y-4 rounded-r-lg overflow-y-auto">
-          <TeacherList></TeacherList>
+          <TeacherList teachers={studentInfo?.teachers} />
 
-          <DownloadNotes></DownloadNotes>
+          <DownloadNotes notes={studentInfo?.notes} />
         </div>
       </div>
     </section>

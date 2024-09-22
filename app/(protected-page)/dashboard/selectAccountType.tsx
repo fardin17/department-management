@@ -23,7 +23,7 @@ export default function SelectAccountType() {
     });
 
     if (data) {
-      router.push(`/dashboard/${role}`);
+      router.refresh();
     } else {
       console.error("Failed to update user:", data);
     }

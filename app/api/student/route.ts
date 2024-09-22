@@ -1,20 +1,19 @@
 import { NextRequest, NextResponse } from "next/server";
 import { validateToken } from "@/app/utils/helper/validation-helper";
-import { fetchTeacherById } from "@/app/utils/helper/api-helper";
+import { fetchStudentById } from "@/app/utils/helper/api-helper";
 
 export async function GET(req: NextRequest) {
   try {
+    console.log(req.headers.get("authorization"))
     const { id } = validateToken(req);
-    console.log({ id });
-    const teacherData = await fetchTeacherById(id);
-    console.log({ teacherData });
-    if (!teacherData) {
+    const studentData = await fetchStudentById(id);
+    if (!studentData) {
       return NextResponse.json({ message: "User info not found!" }, { status: 404 });
     } else {
-      return NextResponse.json({ ...teacherData });
+      return NextResponse.json({ ...studentData });
     }
   } catch (error) {
-    console.error("Error in getting teacher data:", error);
+    console.error("Error in getting student data:", error);
     return NextResponse.json({ message: error }, { status: 500 });
   }
 }
