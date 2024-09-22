@@ -7,7 +7,7 @@ import { useFieldArray, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { AddLessonSchema, AddLessonSchemaType } from "@/schema/dashboardSchema";
 import { Button } from "../button";
-import { Dot, Plus, PowerCircle, Trash } from "lucide-react";
+import { Dot, Loader2, Plus, PowerCircle, Trash } from "lucide-react";
 import Modal from "../modal";
 import { cn } from "@/app/utils/helper/global-helper";
 
@@ -24,7 +24,7 @@ const AddLessonButton = () => {
   } = useForm<AddLessonSchemaType>({
     resolver: zodResolver(AddLessonSchema),
     defaultValues: {
-      duration: 0,
+      duration: undefined, // to show the placeholder text initially
       lessons: [""],
       title: "",
     },
@@ -95,6 +95,7 @@ const AddLessonButton = () => {
           </label>
           <input
             type="number"
+            placeholder="5 minutes"
             {...register("duration", { valueAsNumber: true })}
             className="w-full p-2 border border-indigo-500/40 focus:outline-indigo-600 rounded"
           />
@@ -114,7 +115,7 @@ const AddLessonButton = () => {
                 </span>
                 <input
                   {...register(`lessons.${index}`)}
-                  className="flex-grow px-4 h-12 border border-indigo-500/40 focus:outline-indigo-600 rounded-l focus:outline-red-600"
+                  className="flex-grow px-4 h-12 border border-indigo-500/40 focus:outline-indigo-600 rounded-l"
                   placeholder={`Lesson ${index + 1}`}
                 />
                 <Button
@@ -150,6 +151,7 @@ const AddLessonButton = () => {
             variant={"outline"}
             type="reset"
             disabled={isSubmitting}
+            onClick={() => reset()}
             className="text-gray-800 bg-transparent py-2 px-4 h-12 rounded-md hover:bg-gray-100"
           >
             <PowerCircle className="text-gray-600 pr-1" /> Reset
@@ -157,9 +159,11 @@ const AddLessonButton = () => {
           <Button
             type="submit"
             disabled={isSubmitting}
-            onClick={() => reset()}
             className="bg-sky-600 text-white font-bold px-8 h-12 rounded-md hover:bg-sky-700"
           >
+            {isSubmitting ? (
+              <Loader2 className="animate-spin mr-2" size={20} />
+            ) : null}
             Done
           </Button>
         </div>

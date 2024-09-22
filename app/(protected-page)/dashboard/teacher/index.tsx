@@ -65,7 +65,7 @@ const TeacherDashboard = () => {
 
   return (
     <section className="bg-gray-100 min-h-screen flex justify-center items-center">
-      <div className="flex h-[90vh] max-w-[1400px] w-full mx-auto rounded-lg shadow-lg">
+      <div className="flex h-[90vh] container w-full mx-auto rounded-lg shadow-lg">
         {/* Left Sidebar */}
         <aside className="w-64 bg-gray-50 p-6 space-y-4 rounded-l-lg drop-shadow-lg">
           <Sidebar />
@@ -82,7 +82,7 @@ const TeacherDashboard = () => {
           </div>
 
           {/* Course Card */}
-          <div className="flex gap-2 mt-2">
+          <div className="grid gap-2 pt-2 grid-cols-3">
             {data?.chapter.map((course) => (
               <TeacherCourseCard {...course} key={course.id} />
             ))}

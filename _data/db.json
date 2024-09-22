@@ -315,6 +315,26 @@
           ],
           "duration": "123",
           "lessonCount": 3
+        },
+        {
+          "id": "c0f05627-c956-4762-84a7-eb79563dc286",
+          "title": "new chapter ",
+          "lessons": [
+            "one",
+            "two",
+            "three"
+          ],
+          "duration": "99",
+          "lessonCount": 3
+        },
+        {
+          "id": "b39e1490-7fc1-490e-8166-12ef67a76e7e",
+          "title": "asca",
+          "lessons": [
+            "acas"
+          ],
+          "duration": "5",
+          "lessonCount": 1
         }
       ],
       "department": "",
