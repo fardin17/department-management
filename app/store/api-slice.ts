@@ -1,4 +1,3 @@
-"use client";
 import { ChapterType } from "@/_data/type";
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import Cookies from "js-cookie";
@@ -9,6 +8,7 @@ export const apiSlice = createApi({
     baseUrl: "http://localhost:3000/api",
     prepareHeaders: (headers) => {
       const token = Cookies.get("access-token");
+      console.log("Token from cookies:", token);
       if (token) {
         headers.set("authorization", `Bearer ${token}`);
       }

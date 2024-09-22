@@ -1,45 +1,6 @@
 {
   "users": [
     {
-      "id": "1bb01f5b-44dd-47ec-9415-f85232bbfcf2",
-      "email": "topuroy.dev@gmail.com",
-      "name": "Topu Roy",
-      "provider": "google",
-      "terms": true,
-      "type": null,
-      "image": "https://lh3.googleusercontent.com/a/ACg8ocIbVlek6uuRjnS4oOk9r2-pgWG49VbW5w--9_8kp41VTteTxDc=s96-c"
-    },
-    {
-      "id": "b2c5b23d-00ca-4e9b-b765-53551516fce9",
-      "email": "topuroy143333@gmail.com",
-      "name": "Topu Roy",
-      "provider": "credentials",
-      "terms": true,
-      "type": "student",
-      "password": "$2a$15$YFTPIgH0/pacqPLb/bewyOyRGGRjBkclapFSgS7N6V3gk7c11xBMu",
-      "image": null
-    },
-    {
-      "id": "8ec8cf50-5f35-4026-a5ec-9a4bc7564acf",
-      "email": "abc1@gmail.com",
-      "name": "Topu Roy",
-      "provider": "credentials",
-      "terms": true,
-      "type": "student",
-      "password": "abc1@gmail.com",
-      "image": null
-    },
-    {
-      "id": "12a7e51e-01fa-4b34-b6ad-96e48fd33baa",
-      "email": "abcd@gmail.com",
-      "name": "Topu Roy",
-      "provider": "credentials",
-      "terms": true,
-      "type": "student",
-      "password": "$2a$15$WCynHYZCuycVFiUXRIXRJ.Q1avgKnQdoW2G.8xW9IR1hJmeUjXYw2",
-      "image": null
-    },
-    {
       "id": "0c283efb-bc44-4645-a87b-d43b383034c9",
       "email": "test1@yopmail.com",
       "name": "Fardin islam",
@@ -47,16 +8,6 @@
       "terms": true,
       "type": "student",
       "password": "$2a$10$HUciZW/L8yKxCY2kfH6vEOblZdvdQjzD3YDxxeafDZnrwglHNgqWK",
-      "image": null
-    },
-    {
-      "id": "fb5db223-2d01-478b-89bc-58a946ddbffd",
-      "email": "dev012@yopmail.com",
-      "name": "test 46",
-      "provider": "credentials",
-      "terms": true,
-      "type": "student",
-      "password": "$2a$10$8vhkyEpC.UtZcq/NBdhUQeK6kPFdI0BefFjeol.r5SW94maAKRivy",
       "image": null
     },
     {
@@ -139,7 +90,7 @@
       "department": "",
       "chapter": [
         {
-          "id": 3,
+          "id": 1,
           "title": "Chapter 1",
           "lessons": [
             "Design thinking process",
@@ -152,7 +103,7 @@
           "lessonCount": 5
         },
         {
-          "id": 3,
+          "id": 2,
           "title": "Chapter 100",
           "lessons": [
             "Design thinking process",
@@ -178,7 +129,7 @@
           "lessonCount": 5
         },
         {
-          "id": 3,
+          "id": 4,
           "title": "Chapter 100",
           "lessons": [
             "Design thinking process",
@@ -211,22 +162,6 @@
           "time": "8:30PM"
         }
       ]
-    },
-    {
-      "name": "chapter 1",
-      "description": "this is a description",
-      "id": "2abe3fe0-637a-450f-afc4-7cfe5dce8a3e",
-      "chapter": [
-        {
-          "name": "chapter 1",
-          "description": "this is a description"
-        },
-        {
-          "name": "chapter 1",
-          "description": "this is a description"
-        }
-      ],
-      "notes": []
     }
   ]
 }

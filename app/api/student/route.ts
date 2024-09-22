@@ -1,10 +1,10 @@
-import { NextResponse } from "next/server";
-import { NextApiRequest } from "next";
+import { NextRequest, NextResponse } from "next/server";
 import { validateToken } from "@/app/utils/helper/validation-helper";
 import { fetchStudentById } from "@/app/utils/helper/api-helper";
 
-export async function GET(req: NextApiRequest) {
+export async function GET(req: NextRequest) {
   try {
+    console.log(req.headers.get("authorization"))
     const { id } = validateToken(req);
     const studentData = await fetchStudentById(id);
     if (!studentData) {

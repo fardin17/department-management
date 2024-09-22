@@ -5,23 +5,25 @@ export type DBUserType = {
   image: string | null;
   password?: string;
   terms: boolean;
-  type: "teacher" | "student" | "parent" | null;
+  type: "teacher" | "student" | null;
   provider: "google" | "credentials";
 };
 
 export type ChapterType = {
-  id: number;
+  id: string;
   title: string;
   lessons: string[];
   duration: string;
   lessonCount: number;
 };
+
 export type SubjectType = {
   id: number;
   name: string;
   description: string;
   mark: number;
 };
+
 export type NotesType = {
   name: string;
   description: string;
@@ -34,6 +36,7 @@ export type TeacherType = {
   chapter: ChapterType[];
   notes: NotesType[];
 };
+
 export type StudentType = {
   id: string;
   name: string;
@@ -47,7 +50,7 @@ export type StudentType = {
 
 export type Database = {
   users: DBUserType[];
-  students: [];
+  students: StudentType[];
   teachers: TeacherType[];
 };
 

@@ -5,17 +5,30 @@ import RequestButton from "@/app/components/ui/student-dashboard/requestButton";
 import { useGetStudentInfoQuery } from "@/app/store/api-slice";
 import dynamic from "next/dynamic";
 
-const MarksDistribution = dynamic(() => import("@/app/components/ui/student-dashboard/marksDistribution"), {
-  ssr: false,
-});
-const TeacherList = dynamic(() => import("@/app/components/ui/student-dashboard/teacherList"), { ssr: false });
-const DownloadNotes = dynamic(() => import("@/app/components/ui/student-dashboard/downloadNotes"), { ssr: false });
-const StudentCourseCard = dynamic(() => import("@/app/components/ui/student-dashboard/studentCourseCard"), {
-  ssr: false,
-});
+const MarksDistribution = dynamic(
+  () => import("@/app/components/ui/student-dashboard/marksDistribution"),
+  {
+    ssr: false,
+  }
+);
+const TeacherList = dynamic(
+  () => import("@/app/components/ui/student-dashboard/teacherList"),
+  { ssr: false }
+);
+const DownloadNotes = dynamic(
+  () => import("@/app/components/ui/student-dashboard/downloadNotes"),
+  { ssr: false }
+);
+const StudentCourseCard = dynamic(
+  () => import("@/app/components/ui/student-dashboard/studentCourseCard"),
+  {
+    ssr: false,
+  }
+);
 
 const StudentDashboard = () => {
   const { data: studentInfo } = useGetStudentInfoQuery({});
+
   return (
     <section className="bg-gray-100 min-h-screen flex justify-center items-center">
       <div className="flex h-[90vh] max-w-[1400px] w-full mx-auto rounded-lg shadow-lg">

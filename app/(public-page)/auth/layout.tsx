@@ -1,13 +1,16 @@
 import React from "react";
-import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
 import Link from "next/link";
-import { authOptions } from "@/app/utils/helper/auth-helper";
+import { getServerAuthSession } from "@/app/utils/helper/auth-helper";
 
-export default async function layout({ children }: { children: React.ReactNode }) {
-  const session = await getServerSession(authOptions);
-  // console.log({ session });
+type Props = {
+  children: React.ReactNode;
+};
+
+export default async function layout({ children }: Props) {
+  const session = await getServerAuthSession();
   if (session) redirect("/dashboard");
+
   return (
     <div>
       <nav className=" flex gap-2">

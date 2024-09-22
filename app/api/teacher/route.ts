@@ -1,9 +1,8 @@
-import { NextResponse } from "next/server";
-import { NextApiRequest } from "next";
+import { NextRequest, NextResponse } from "next/server";
 import { validateToken } from "@/app/utils/helper/validation-helper";
 import { fetchTeacherById } from "@/app/utils/helper/api-helper";
 
-export async function GET(req: NextApiRequest) {
+export async function GET(req: NextRequest) {
   try {
     const { id } = validateToken(req);
     console.log({ id });
