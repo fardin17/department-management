@@ -37,35 +37,6 @@
       "type": "student",
       "password": "$2a$10$3FGRXh2shdoLj1ztfOcrRev/UHnn6jzbk/.ya5FUiUMcwJQEXffva",
       "image": null
-    },
-    {
-      "id": "aab67330-8c22-45a3-8e34-897d89d6868d",
-      "email": "topu@gmail.com",
-      "name": "Topu Roy 1",
-      "provider": "credentials",
-      "terms": true,
-      "type": "student",
-      "password": "$2a$10$/eM6q/mVvrigRlUYfrqSr.DXGaSnHI.UykmNcTWnucgPKjy5CQeyi",
-      "image": null
-    },
-    {
-      "id": "3ffe8e1d-4b3b-43f3-b91a-b148b67a71a8",
-      "email": "topuroy.dev@gmail.com",
-      "name": "Topu Roy",
-      "provider": "google",
-      "terms": true,
-      "type": "student",
-      "image": "https://lh3.googleusercontent.com/a/ACg8ocIbVlek6uuRjnS4oOk9r2-pgWG49VbW5w--9_8kp41VTteTxDc=s96-c"
-    },
-    {
-      "id": "33dcaf8d-3137-433b-a758-a0381abfa52e",
-      "email": "topu@email.com",
-      "name": "topu",
-      "provider": "credentials",
-      "terms": true,
-      "type": "teacher",
-      "password": "$2a$10$HN/XqPMe2s96VLlfrwkNrOOXHwEFMJ7QW1MCKePjWI.zyUMYZM2dm",
-      "image": null
     }
   ],
   "students": [
@@ -110,20 +81,6 @@
           "time": "8:30PM"
         }
       ]
-    },
-    {
-      "id": "aab67330-8c22-45a3-8e34-897d89d6868d",
-      "name": "Topu Roy 1",
-      "notes": [],
-      "subjects": [],
-      "teachers": []
-    },
-    {
-      "id": "3ffe8e1d-4b3b-43f3-b91a-b148b67a71a8",
-      "name": "Topu Roy",
-      "notes": [],
-      "subjects": [],
-      "teachers": []
     }
   ],
   "teachers": [
@@ -133,7 +90,7 @@
       "department": "",
       "chapter": [
         {
-          "id": 3,
+          "id": 1,
           "title": "Chapter 1",
           "lessons": [
             "Design thinking process",
@@ -146,7 +103,7 @@
           "lessonCount": 5
         },
         {
-          "id": 3,
+          "id": 2,
           "title": "Chapter 100",
           "lessons": [
             "Design thinking process",
@@ -172,7 +129,7 @@
           "lessonCount": 5
         },
         {
-          "id": 3,
+          "id": 4,
           "title": "Chapter 100",
           "lessons": [
             "Design thinking process",
@@ -205,141 +162,6 @@
           "time": "8:30PM"
         }
       ]
-    },
-    {
-      "name": "chapter 1",
-      "description": "this is a description",
-      "id": "2abe3fe0-637a-450f-afc4-7cfe5dce8a3e",
-      "chapter": [
-        {
-          "name": "chapter 1",
-          "description": "this is a description"
-        },
-        {
-          "name": "chapter 1",
-          "description": "this is a description"
-        }
-      ],
-      "notes": []
-    },
-    {
-      "id": "33dcaf8d-3137-433b-a758-a0381abfa52e",
-      "chapter": [
-        {
-          "id": 3,
-          "title": "Chapter 100",
-          "lessons": [
-            "Design thinking process",
-            "Origin of design",
-            "What is design science",
-            "History of design thinking",
-            "Design sequence significance"
-          ],
-          "duration": "50 Min",
-          "lessonCount": 5
-        },
-        {
-          "id": 4,
-          "title": "Chapter 100",
-          "lessons": [
-            "Design thinking process",
-            "Origin of design",
-            "What is design science",
-            "History of design thinking",
-            "Design sequence significance"
-          ],
-          "duration": "50 Min",
-          "lessonCount": 5
-        },
-        {
-          "id": 5,
-          "title": "Chapter 100",
-          "lessons": [
-            "Design thinking process",
-            "Origin of design",
-            "What is design science",
-            "History of design thinking",
-            "Design sequence significance"
-          ],
-          "duration": "50 Min",
-          "lessonCount": 5
-        },
-        {
-          "id": 6,
-          "title": "",
-          "lessons": [
-            "lesson 2",
-            "ascaac 16",
-            "acla ckla c"
-          ],
-          "duration": "",
-          "lessonCount": 3
-        },
-        {
-          "id": "5d5d7b6f-4002-4c61-b33c-4b2a947e5286",
-          "title": "neewcww",
-          "lessons": [
-            "ascaca",
-            "cascacac"
-          ],
-          "duration": "5",
-          "lessonCount": 2
-        },
-        {
-          "id": "5f7e9e80-70bb-4ccb-9379-52978f5b57fe",
-          "title": "new title",
-          "lessons": [
-            " les 1",
-            "les 2",
-            "les 3"
-          ],
-          "duration": "10",
-          "lessonCount": 3
-        },
-        {
-          "id": "951a2a5a-3340-438d-8f6f-90bd6898c08d",
-          "title": "New chap 2",
-          "lessons": [
-            " lesson 5"
-          ],
-          "duration": "99",
-          "lessonCount": 1
-        },
-        {
-          "id": "fd97967b-926a-4562-9845-02ec11bf818a",
-          "title": "title",
-          "lessons": [
-            " abcd",
-            "ascac",
-            "ascasc"
-          ],
-          "duration": "123",
-          "lessonCount": 3
-        },
-        {
-          "id": "c0f05627-c956-4762-84a7-eb79563dc286",
-          "title": "new chapter ",
-          "lessons": [
-            "one",
-            "two",
-            "three"
-          ],
-          "duration": "99",
-          "lessonCount": 3
-        },
-        {
-          "id": "b39e1490-7fc1-490e-8166-12ef67a76e7e",
-          "title": "asca",
-          "lessons": [
-            "acas"
-          ],
-          "duration": "5",
-          "lessonCount": 1
-        }
-      ],
-      "department": "",
-      "name": "topu",
-      "notes": []
     }
   ]
 }
