@@ -1,165 +1,494 @@
 {
   "users": [
     {
-      "id": "0c283efb-bc44-4645-a87b-d43b383034c9",
-      "email": "test1@yopmail.com",
-      "name": "Fardin islam",
+      "id": "d45f8a8e-6a54-4e77-8803-97a6284b758b",
+      "email": "alice.johnson@example.com",
+      "name": "Alice Johnson",
       "provider": "credentials",
       "terms": true,
-      "type": "student",
-      "password": "$2a$10$HUciZW/L8yKxCY2kfH6vEOblZdvdQjzD3YDxxeafDZnrwglHNgqWK",
+      "type": "teacher",
+      "password": "$2a$10$4iXOQQzVD7EPcQ3ATFTd6.nQnRlXVSpbx38UyjV9TYvXYzwJCydAK",
       "image": null
     },
     {
-      "id": "317f7585-de29-4b12-a77b-7cbef44a6975",
-      "email": "fardin785@gmail.com",
-      "name": "fardin islam",
-      "provider": "google",
+      "id": "290bd774-8974-4d83-8853-49f282bc5d67",
+      "email": "bob.williams@example.com",
+      "name": "Bob Williams",
+      "provider": "credentials",
       "terms": true,
-      "type": null,
-      "image": "https://lh3.googleusercontent.com/a/ACg8ocKM6U_GP3Z2nyad3QSATbNY0mH5pjvhtHeUHztgtstBp1FJN5-o=s96-c"
+      "type": "teacher",
+      "password": "$2a$10$qn0HdvaT/XdLozLl2ruo6OkhmpDO/OGIzhuWLIMDvanhZ1Lq1M8RK",
+      "image": null
     },
     {
-      "id": "31572bbb-f588-48d2-b28f-e2275f23abdc",
-      "email": "fardin.islam@vivasoftltd.com",
-      "name": "Fardin islam",
-      "provider": "google",
+      "id": "e597a596-5f7b-4cba-a74f-688ef0fd14de",
+      "email": "charlie.brown@example.com",
+      "name": "Charlie Brown",
+      "provider": "credentials",
       "terms": true,
-      "type": null,
-      "image": "https://lh3.googleusercontent.com/a/ACg8ocIyeQPfR4s-FRcUrwX99TFsENFe6LlvSoRr-xQAEw5K02ogMGVC=s96-c"
+      "type": "teacher",
+      "password": "$2a$10$VJlqefG9BNo2vKsRI8wcN.786QkrXQ9f94AXvfC3kfjxoxbwuhGu.",
+      "image": null
     },
     {
-      "id": "2abe3fe0-637a-450f-afc4-7cfe5dce8a3e",
-      "email": "01@yopmail.com",
-      "name": "test 46",
+      "id": "b8cc11cc-bd91-42df-95a9-1c529c77a853",
+      "email": "david.smith@example.com",
+      "name": "David Smith",
+      "provider": "credentials",
+      "terms": true,
+      "type": "teacher",
+      "password": "$2a$10$qAF37niQDA/.t.OopMsA7eCGdd/uGiFVlNmGNyCN136QjKFdyZPRO",
+      "image": null
+    },
+    {
+      "id": "706c9bdc-b247-4568-b554-530e4bb4b9ad",
+      "email": "eve.thompson@example.com",
+      "name": "Eve Thompson",
+      "provider": "credentials",
+      "terms": true,
+      "type": "teacher",
+      "password": "$2a$10$uhzc8WFTI0C1d5Kb1QDxEO/TM.QaiBUyrSlHb1pBdiXSU57O3oVa6",
+      "image": null
+    },
+    {
+      "id": "6be45b70-d780-4804-b8b7-35500e42e046",
+      "email": "frank.miller@example.com",
+      "name": "Frank Miller",
+      "provider": "credentials",
+      "terms": true,
+      "type": "teacher",
+      "password": "$2a$10$hD80G/LKGMaeSZHW/M.buO/apPVGks066LQPS5V02eok6tJz2fztq",
+      "image": null
+    },
+    {
+      "id": "0b1ded71-ae0f-4d1c-b383-7fef538f9f20",
+      "email": "grace.clark@example.com",
+      "name": "Grace Clark",
+      "provider": "credentials",
+      "terms": true,
+      "type": "teacher",
+      "password": "$2a$10$Es/kVDjY815.0z4d7Ng1p.Tg5NjqLaV3eQkhoZcDil4YZFqvB4J9y",
+      "image": null
+    },
+    {
+      "id": "506d67ba-e254-4660-9768-ee4b16eeb6dc",
+      "email": "henry.wilson@example.com",
+      "name": "Henry Wilson",
+      "provider": "credentials",
+      "terms": true,
+      "type": "teacher",
+      "password": "$2a$10$AJT5GCXoAZgaKfUxN.ltHeb5sV0W563766M9NbGzqKnHpbqQGBd5K",
+      "image": null
+    },
+    {
+      "id": "79bbd1c7-0ff4-4709-b416-70b0d457b67c",
+      "email": "isla.martinez@example.com",
+      "name": "Isla Martinez",
+      "provider": "credentials",
+      "terms": true,
+      "type": "teacher",
+      "password": "$2a$10$6yojAyyQyWLbRGABAdBOIO/WCt.utNhqLiWoBkICxfhmrwCN010Wu",
+      "image": null
+    },
+    {
+      "id": "a4402a7f-f153-4cff-9e3d-18857998fafa",
+      "email": "jack.davis@example.com",
+      "name": "Jack Davis",
+      "provider": "credentials",
+      "terms": true,
+      "type": "teacher",
+      "password": "$2a$10$F8LMyRZMOtKPrTElTxJ6q.k9bsSv1C0BMKx6914zUsZT4pNf4IyUy",
+      "image": null
+    },
+    {
+      "id": "1172ffb4-e3a5-47cc-9734-8ea65a429379",
+      "email": "kathy.moore@example.com",
+      "name": "Kathy Moore",
+      "provider": "credentials",
+      "terms": true,
+      "type": "teacher",
+      "password": "$2a$10$Uv9utUV2gy4yC4cSjX4Md.DoGT0zU9pwA8AmuAGrsbGBgDxfDhfAG",
+      "image": null
+    },
+    {
+      "id": "cc8c4773-e1c1-43cf-98ad-da90b8d5f5c6",
+      "email": "liam.anderson@example.com",
+      "name": "Liam Anderson",
+      "provider": "credentials",
+      "terms": true,
+      "type": "teacher",
+      "password": "$2a$10$F/HaBKLXErJvnxnoIPxb3.b0Gs8Po6h8Z7/OvNL29kNlWjsw0oYtO",
+      "image": null
+    },
+    {
+      "id": "afead781-2c84-408c-8c3d-d428605c955b",
+      "email": "mia.lewis@example.com",
+      "name": "Mia Lewis",
+      "provider": "credentials",
+      "terms": true,
+      "type": "teacher",
+      "password": "$2a$10$5Ha./egfzNSW8rL8UnysLOsXtMBtBbEGFBtERuSlQsvD8vt4iq3ZW",
+      "image": null
+    },
+    {
+      "id": "9034bc17-0e0b-4ab4-8a87-c2acbecb8e92",
+      "email": "noah.walker@example.com",
+      "name": "Noah Walker",
+      "provider": "credentials",
+      "terms": true,
+      "type": "teacher",
+      "password": "$2a$10$yDFvnKNO7Uf62AclDTBMCOuP2c8tcWCkwdJ6UvFaG0dpGCUXKbjT2",
+      "image": null
+    },
+    {
+      "id": "a4d8dd3c-ec7d-4bb0-8e14-3adca831579c",
+      "email": "olivia.young@example.com",
+      "name": "Olivia Young",
+      "provider": "credentials",
+      "terms": true,
+      "type": "teacher",
+      "password": "$2a$10$IHimsF/7fu/y9nhSmclrGexQn.Y9C6jH/E955l76Yx/.Z3tOx/iZ6",
+      "image": null
+    },
+    {
+      "id": "acc57656-fd1c-4ba9-a4e4-1c540eee2ef0",
+      "email": "user@user.user",
+      "name": "User",
       "provider": "credentials",
       "terms": true,
       "type": "student",
-      "password": "$2a$10$3FGRXh2shdoLj1ztfOcrRev/UHnn6jzbk/.ya5FUiUMcwJQEXffva",
+      "password": "$2a$10$mzMmokAXUZkCX8WTZIX6mOgkHDbcp3MsNoMUwunzs26gbqzZ7ngzG",
       "image": null
+    },
+    {
+      "id": "672a7041-068f-4024-bdd6-5a77c890d40f",
+      "email": "topuroy.dev@gmail.com",
+      "name": "Topu Roy",
+      "provider": "google",
+      "terms": true,
+      "type": "student",
+      "image": "https://lh3.googleusercontent.com/a/ACg8ocIbVlek6uuRjnS4oOk9r2-pgWG49VbW5w--9_8kp41VTteTxDc=s96-c"
     }
   ],
   "students": [
     {
-      "id": "0c283efb-bc44-4645-a87b-d43b383034c9",
-      "name": "Fardin islam",
-      "teachers": [
-        {
-          "name": "Teacher 1",
-          "department": "CSE"
-        },
-        {
-          "name": "Teacher 2",
-          "department": "EEE"
-        }
-      ],
+      "id": "acc57656-fd1c-4ba9-a4e4-1c540eee2ef0",
+      "name": "User",
+      "department": "Computer Science",
+      "notes": [],
       "subjects": [
         {
           "id": 1,
-          "name": "Computer Science",
-          "description": "this is a description",
-          "mark": 100
+          "name": "Data Structures and Algorithms",
+          "mark": 100,
+          "teacherId": "1172ffb4-e3a5-47cc-9734-8ea65a429379"
         },
         {
           "id": 2,
-          "name": "C Programming",
-          "description": "this is a description",
-          "mark": 100
-        }
-      ],
-      "notes": [
-        {
-          "title": "How to become a good communicator?",
-          "subject": "Business Management",
-          "date": "21-12-2021",
-          "time": "8:30PM"
+          "name": "Database Management Systems",
+          "mark": 50,
+          "teacherId": "cc8c4773-e1c1-43cf-98ad-da90b8d5f5c6"
         },
         {
-          "title": "Strategy Rules",
-          "subject": "Business Management",
-          "date": "21-12-2021",
-          "time": "8:30PM"
+          "id": 3,
+          "name": "Computer Networks",
+          "mark": 60,
+          "teacherId": "afead781-2c84-408c-8c3d-d428605c955b"
+        },
+        {
+          "id": 4,
+          "name": "Software Engineering",
+          "mark": 100,
+          "teacherId": "9034bc17-0e0b-4ab4-8a87-c2acbecb8e92"
+        },
+        {
+          "id": 5,
+          "name": "Artificial Intelligence",
+          "mark": 50,
+          "teacherId": "a4d8dd3c-ec7d-4bb0-8e14-3adca831579c"
         }
-      ]
+      ],
+      "teachers": []
+    },
+    {
+      "id": "672a7041-068f-4024-bdd6-5a77c890d40f",
+      "name": "Topu Roy",
+      "department": "Computer Science",
+      "notes": [],
+      "subjects": [
+        {
+          "id": 1,
+          "name": "Data Structures and Algorithms",
+          "mark": 100,
+          "teacherId": "1172ffb4-e3a5-47cc-9734-8ea65a429379"
+        },
+        {
+          "id": 2,
+          "name": "Database Management Systems",
+          "mark": 50,
+          "teacherId": "cc8c4773-e1c1-43cf-98ad-da90b8d5f5c6"
+        },
+        {
+          "id": 3,
+          "name": "Computer Networks",
+          "mark": 60,
+          "teacherId": "afead781-2c84-408c-8c3d-d428605c955b"
+        },
+        {
+          "id": 4,
+          "name": "Software Engineering",
+          "mark": 100,
+          "teacherId": "9034bc17-0e0b-4ab4-8a87-c2acbecb8e92"
+        },
+        {
+          "id": 5,
+          "name": "Artificial Intelligence",
+          "mark": 50,
+          "teacherId": "a4d8dd3c-ec7d-4bb0-8e14-3adca831579c"
+        }
+      ],
+      "teachers": []
     }
   ],
   "teachers": [
     {
-      "id": "fb5db223-2d01-478b-89bc-58a946ddbffd",
-      "name": "test 46",
-      "department": "",
+      "id": "d45f8a8e-6a54-4e77-8803-97a6284b758b",
+      "chapter": [],
+      "department": "Mechanical",
+      "name": "Alice Johnson",
+      "notes": []
+    },
+    {
+      "id": "290bd774-8974-4d83-8853-49f282bc5d67",
+      "name": "Bob Williams",
+      "chapter": [],
+      "department": "Mechanical",
+      "notes": []
+    },
+    {
+      "id": "e597a596-5f7b-4cba-a74f-688ef0fd14de",
+      "chapter": [],
+      "department": "Mechanical",
+      "name": "Charlie Brown",
+      "notes": []
+    },
+    {
+      "id": "b8cc11cc-bd91-42df-95a9-1c529c77a853",
+      "chapter": [],
+      "department": "Mechanical",
+      "name": "David Smith",
+      "notes": []
+    },
+    {
+      "id": "706c9bdc-b247-4568-b554-530e4bb4b9ad",
+      "chapter": [],
+      "department": "Mechanical",
+      "name": "Eve Thompson",
+      "notes": []
+    },
+    {
+      "id": "6be45b70-d780-4804-b8b7-35500e42e046",
+      "chapter": [],
+      "department": "Electrical",
+      "name": "Frank Miller",
+      "notes": []
+    },
+    {
+      "id": "0b1ded71-ae0f-4d1c-b383-7fef538f9f20",
+      "chapter": [],
+      "department": "Electrical",
+      "name": "Grace Clark",
+      "notes": []
+    },
+    {
+      "id": "506d67ba-e254-4660-9768-ee4b16eeb6dc",
+      "chapter": [],
+      "department": "Electrical",
+      "name": "Henry Wilson",
+      "notes": []
+    },
+    {
+      "id": "79bbd1c7-0ff4-4709-b416-70b0d457b67c",
+      "chapter": [],
+      "department": "Electrical",
+      "name": "Isla Martinez",
+      "notes": []
+    },
+    {
+      "id": "a4402a7f-f153-4cff-9e3d-18857998fafa",
+      "chapter": [],
+      "department": "Electrical",
+      "name": "Jack Davis",
+      "notes": []
+    },
+    {
+      "id": "1172ffb4-e3a5-47cc-9734-8ea65a429379",
+      "chapter": [],
+      "department": "Computer Science",
+      "name": "Kathy Moore",
+      "notes": []
+    },
+    {
+      "id": "cc8c4773-e1c1-43cf-98ad-da90b8d5f5c6",
+      "chapter": [],
+      "department": "Computer Science",
+      "name": "Liam Anderson",
+      "notes": []
+    },
+    {
+      "id": "afead781-2c84-408c-8c3d-d428605c955b",
       "chapter": [
         {
-          "id": 1,
-          "title": "Chapter 1",
+          "id": "239a2a84-8b97-40e5-9c68-a6f61baf3d20",
+          "title": "New lesson",
           "lessons": [
-            "Design thinking process",
-            "Origin of design",
-            "What is design science",
-            "History of design thinking",
-            "Design sequence significance"
+            "one",
+            "two",
+            "three",
+            "four"
           ],
-          "duration": "50 Min",
-          "lessonCount": 5
+          "duration": "20",
+          "lessonCount": 4
+        }
+      ],
+      "department": "Computer Science",
+      "name": "Mia Lewis",
+      "notes": [],
+      "subject": "Computer Networks"
+    },
+    {
+      "id": "9034bc17-0e0b-4ab4-8a87-c2acbecb8e92",
+      "chapter": [
+        {
+          "id": "c15473d6-034f-43e8-8594-414b43b9443f",
+          "title": "Chater 1",
+          "lessons": [
+            "New lesson 1",
+            "New lesson 2"
+          ],
+          "duration": "60",
+          "lessonCount": 2
+        }
+      ],
+      "department": "Computer Science",
+      "name": "Noah Walker",
+      "notes": [],
+      "subject": "Software Engineering"
+    },
+    {
+      "id": "a4d8dd3c-ec7d-4bb0-8e14-3adca831579c",
+      "chapter": [],
+      "department": "Computer Science",
+      "name": "Olivia Young",
+      "notes": []
+    }
+  ],
+  "departments": [
+    {
+      "id": "dept1",
+      "name": "Mechanical",
+      "subjects": [
+        {
+          "id": 1,
+          "name": "Fluid Mechanics",
+          "mark": 100,
+          "teacherId": "d45f8a8e-6a54-4e77-8803-97a6284b758b"
         },
         {
           "id": 2,
-          "title": "Chapter 100",
-          "lessons": [
-            "Design thinking process",
-            "Origin of design",
-            "What is design science",
-            "History of design thinking",
-            "Design sequence significance"
-          ],
-          "duration": "50 Min",
-          "lessonCount": 5
+          "name": "Machine Design",
+          "mark": 60,
+          "teacherId": "290bd774-8974-4d83-8853-49f282bc5d67"
         },
         {
           "id": 3,
-          "title": "Chapter 100",
-          "lessons": [
-            "Design thinking process",
-            "Origin of design",
-            "What is design science",
-            "History of design thinking",
-            "Design sequence significance"
-          ],
-          "duration": "50 Min",
-          "lessonCount": 5
+          "name": "Heat Transfer",
+          "mark": 50,
+          "teacherId": "e597a596-5f7b-4cba-a74f-688ef0fd14de"
         },
         {
           "id": 4,
-          "title": "Chapter 100",
-          "lessons": [
-            "Design thinking process",
-            "Origin of design",
-            "What is design science",
-            "History of design thinking",
-            "Design sequence significance"
-          ],
-          "duration": "50 Min",
-          "lessonCount": 5
+          "name": "Manufacturing Processes",
+          "mark": 100,
+          "teacherId": "b8cc11cc-bd91-42df-95a9-1c529c77a853"
+        },
+        {
+          "id": 5,
+          "name": "Engineering Mechanics",
+          "mark": 60,
+          "teacherId": "706c9bdc-b247-4568-b554-530e4bb4b9ad"
         }
-      ],
-      "notes": [
+      ]
+    },
+    {
+      "id": "dept2",
+      "name": "Electrical",
+      "subjects": [
         {
-          "title": "How to become a good communicator?",
-          "subject": "Business Management",
-          "date": "21-12-2021",
-          "time": "8:30PM"
+          "id": 1,
+          "name": "Circuit Theory",
+          "mark": 60,
+          "teacherId": "6be45b70-d780-4804-b8b7-35500e42e046"
         },
         {
-          "title": "Strategy Rules",
-          "subject": "Business Management",
-          "date": "21-12-2021",
-          "time": "8:30PM"
+          "id": 2,
+          "name": "Power Systems",
+          "mark": 100,
+          "teacherId": "0b1ded71-ae0f-4d1c-b383-7fef538f9f20"
         },
         {
-          "title": "New notes",
-          "subject": "React",
-          "date": "21-12-2021",
-          "time": "8:30PM"
+          "id": 3,
+          "name": "Electrical Machines",
+          "mark": 50,
+          "teacherId": "506d67ba-e254-4660-9768-ee4b16eeb6dc"
+        },
+        {
+          "id": 4,
+          "name": "Digital Electronics",
+          "mark": 100,
+          "teacherId": "79bbd1c7-0ff4-4709-b416-70b0d457b67c"
+        },
+        {
+          "id": 5,
+          "name": "Signal Processing",
+          "mark": 60,
+          "teacherId": "a4402a7f-f153-4cff-9e3d-18857998fafa"
+        }
+      ]
+    },
+    {
+      "id": "dept4",
+      "name": "Computer Science",
+      "subjects": [
+        {
+          "id": 1,
+          "name": "Data Structures and Algorithms",
+          "mark": 100,
+          "teacherId": "1172ffb4-e3a5-47cc-9734-8ea65a429379"
+        },
+        {
+          "id": 2,
+          "name": "Database Management Systems",
+          "mark": 50,
+          "teacherId": "cc8c4773-e1c1-43cf-98ad-da90b8d5f5c6"
+        },
+        {
+          "id": 3,
+          "name": "Computer Networks",
+          "mark": 60,
+          "teacherId": "afead781-2c84-408c-8c3d-d428605c955b"
+        },
+        {
+          "id": 4,
+          "name": "Software Engineering",
+          "mark": 100,
+          "teacherId": "9034bc17-0e0b-4ab4-8a87-c2acbecb8e92"
+        },
+        {
+          "id": 5,
+          "name": "Artificial Intelligence",
+          "mark": 50,
+          "teacherId": "a4d8dd3c-ec7d-4bb0-8e14-3adca831579c"
         }
       ]
     }

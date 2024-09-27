@@ -7,6 +7,7 @@ import dynamic from "next/dynamic";
 import Cookies from "js-cookie";
 import { useGetTeacherInfoQuery } from "@/app/store/api-slice";
 import { useEffect, useState } from "react";
+import { Button } from "@/app/components/ui/button";
 
 const ClassesCompletionChart = dynamic(
   () =>
@@ -45,19 +46,20 @@ const TeacherDashboard = () => {
 
   const renderExpiredModal = showTokenExpired && (
     <div className="fixed inset-0 bg-gray-500 bg-opacity-50 flex justify-center items-center z-50">
-      <div className="bg-white p-6 rounded-lg shadow-lg w-1/3">
+      <div className="bg-white text-black p-6 rounded-lg shadow-lg w-1/3">
         <div className="flex flex-col gap-20">
           <h2 className="text-xl font-semibold text-center">
             Your Session Expired
           </h2>
-          <button
+          <Button
+            className=""
             onClick={() => {
               signOut();
               Cookies.remove("access-token");
             }}
           >
             Login
-          </button>
+          </Button>
         </div>
       </div>
     </div>

@@ -6,18 +6,9 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { SignInFormFields } from "@/assets/formFields";
 import { FormInput } from "@/app/components/form-input";
 import LogoSVG from "@/assets/logo";
-import { signIn, useSession } from "next-auth/react";
-import { useRouter } from "next/navigation";
-import { useEffect } from "react";
+import { signIn } from "next-auth/react";
 
 export default function LoginForm() {
-  const router = useRouter();
-  const { data } = useSession();
-
-  useEffect(() => {
-    if (data?.user) router.push("/dashboard");
-  }, [data]);
-
   const {
     register,
     handleSubmit,
@@ -31,16 +22,25 @@ export default function LoginForm() {
   });
 
   const onSubmit = (data: SignInSchemaType) => {
-    signIn("credentials", { email: data?.email, password: data?.password, callbackUrl: "/dashboard" });
+    signIn("credentials", {
+      email: data?.email,
+      password: data?.password,
+      callbackUrl: "/dashboard",
+    });
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="mx-auto w-full max-w-md text-black">
+    <form
+      onSubmit={handleSubmit(onSubmit)}
+      className="mx-auto w-full max-w-md text-black"
+    >
       <div className="translate-x-[3.1rem] scale-125 pb-5">
         <LogoSVG />
       </div>
       <h2 className="text-3xl font-bold">Get Started</h2>
-      <p className="pb-3 text-sm font-semibold text-black/60">Welcome back, Enter your credentials to sign in</p>
+      <p className="pb-3 text-sm font-semibold text-black/60">
+        Welcome back, Enter your credentials to sign in
+      </p>
 
       <div className="space-y-3 pb-3">
         {SignInFormFields.map((item) => (

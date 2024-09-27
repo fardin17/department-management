@@ -1,9 +1,13 @@
 "use client";
 import { SubjectType } from "@/_data/type";
+import { Button } from "@/app/components/ui/button";
 import Sidebar from "@/app/components/ui/sidebar";
 import RequestButton from "@/app/components/ui/student-dashboard/requestButton";
 import { useGetStudentInfoQuery } from "@/app/store/api-slice";
+import { signOut } from "next-auth/react";
 import dynamic from "next/dynamic";
+import { useEffect, useState } from "react";
+import Cookies from "js-cookie";
 
 const MarksDistribution = dynamic(
   () => import("@/app/components/ui/student-dashboard/marksDistribution"),
@@ -27,7 +31,35 @@ const StudentCourseCard = dynamic(
 );
 
 const StudentDashboard = () => {
-  const { data: studentInfo } = useGetStudentInfoQuery({});
+  const [showTokenExpired, setShowTokenExpired] = useState(false);
+  const { data: studentInfo, error } = useGetStudentInfoQuery({});
+
+  useEffect(() => {
+    if (error?.data?.message?.name === "TokenExpiredError") {
+      signOut();
+    }
+  }, [error]);
+
+  const renderExpiredModal = showTokenExpired && (
+    <div className="fixed inset-0 bg-gray-500 bg-opacity-50 flex justify-center items-center z-50">
+      <div className="bg-white text-black p-6 rounded-lg shadow-lg w-1/3">
+        <div className="flex flex-col gap-20">
+          <h2 className="text-xl font-semibold text-center">
+            Your Session Expired
+          </h2>
+          <Button
+            className=""
+            onClick={() => {
+              signOut();
+              Cookies.remove("access-token");
+            }}
+          >
+            Login
+          </Button>
+        </div>
+      </div>
+    </div>
+  );
 
   return (
     <section className="bg-gray-100 min-h-screen flex justify-center items-center">
@@ -66,6 +98,7 @@ const StudentDashboard = () => {
           <DownloadNotes notes={studentInfo?.notes} />
         </div>
       </div>
+      {renderExpiredModal}
     </section>
   );
 };

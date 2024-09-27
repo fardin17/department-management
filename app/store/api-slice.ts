@@ -1,6 +1,7 @@
 import { ChapterType } from "@/_data/type";
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import Cookies from "js-cookie";
+import type { ProfileResponseType } from "../utils/helper/api-helper";
 
 export const apiSlice = createApi({
   reducerPath: "api",
@@ -16,7 +17,8 @@ export const apiSlice = createApi({
       return headers;
     },
   }),
-  tagTypes: ["Teachers", "Students"],
+
+  tagTypes: ["Teachers", "Students", "Profile"],
   refetchOnFocus: true,
   refetchOnReconnect: true,
 
@@ -25,10 +27,17 @@ export const apiSlice = createApi({
       query: () => `/teacher`,
       providesTags: ["Teachers"],
     }),
+
     getStudentInfo: builder.query({
       query: () => `/student`,
       providesTags: ["Students"],
     }),
+
+    getProfileInfo: builder.query<ProfileResponseType, void>({
+      query: () => `/profile`,
+      providesTags: ["Profile"],
+    }),
+
     postChapter: builder.mutation<ChapterType, ChapterType>({
       query: (chapter) => ({
         url: `/teacher/chapter`,
@@ -37,6 +46,7 @@ export const apiSlice = createApi({
       }),
       invalidatesTags: ["Teachers"],
     }),
+
     postNote: builder.mutation({
       query: (note) => ({
         url: `/teacher/notes`,
@@ -47,6 +57,6 @@ export const apiSlice = createApi({
     }),
   }),
 });
-export const { useGetTeacherInfoQuery, useGetStudentInfoQuery, usePostChapterMutation, usePostNoteMutation } = apiSlice;
 
+export const { useGetProfileInfoQuery, useGetTeacherInfoQuery, useGetStudentInfoQuery, usePostChapterMutation, usePostNoteMutation } = apiSlice;
 export default apiSlice.reducer;

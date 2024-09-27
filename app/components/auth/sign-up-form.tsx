@@ -7,17 +7,10 @@ import { SignUpFormFields } from "@/assets/formFields";
 import { FormInput, FormInputErrorText } from "@/app/components/form-input";
 import LogoSVG from "@/assets/logo";
 import toast from "react-hot-toast";
-import { useSession } from "next-auth/react";
-import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 
 export default function SignUpForm() {
   const router = useRouter();
-  const { data } = useSession();
-
-  useEffect(() => {
-    if (data?.user) router.push("/dashboard");
-  }, [data]);
 
   const {
     register,
@@ -58,12 +51,17 @@ export default function SignUpForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="mx-auto w-full max-w-md text-black">
+    <form
+      onSubmit={handleSubmit(onSubmit)}
+      className="mx-auto w-full max-w-md text-black"
+    >
       <div className="translate-x-[3.1rem] scale-125 pb-5">
         <LogoSVG />
       </div>
       <h2 className="text-3xl font-bold">Create your account</h2>
-      <p className="pb-3 text-sm font-semibold text-black/60">Enter your details to create your account</p>
+      <p className="pb-3 text-sm font-semibold text-black/60">
+        Enter your details to create your account
+      </p>
 
       <div className="space-y-3 pb-3">
         {SignUpFormFields.map((item) => (
@@ -88,11 +86,16 @@ export default function SignUpForm() {
             {...register("terms")}
             className="mr-2 h-4 w-4 bg-gray-100 text-indigo-700"
           />
-          <label htmlFor="terms" className="text-sm font-semibold text-gray-500">
+          <label
+            htmlFor="terms"
+            className="text-sm font-semibold text-gray-500"
+          >
             I accept the terms and conditions
           </label>
         </div>
-        {errors.terms && <FormInputErrorText message={errors.terms.message ?? ""} />}
+        {errors.terms && (
+          <FormInputErrorText message={errors.terms.message ?? ""} />
+        )}
       </div>
 
       <button
