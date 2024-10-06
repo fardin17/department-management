@@ -1,12 +1,13 @@
 "use client";
 
 import Cookies from "js-cookie";
-import { useSession } from "next-auth/react";
+import type { Session } from "next-auth";
 
-export default function SetCookie() {
-  const { data: session } = useSession();
-  if (session) {
-    Cookies.set("access-token", session.accessToken!);
-  }
+/**
+ * This purpose of this component is just to set cookies after logging in.
+ */
+export default function SetCookie({ session }: { session: Session }) {
+  Cookies.set("access-token", session.accessToken!);
+
   return null;
 }

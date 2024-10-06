@@ -46,8 +46,13 @@ export async function POST(req: Request) {
         const accessToken = generateAccessToken(existingUser);
         return NextResponse.json({ email: existingUser.email, name: existingUser.name, accessToken }, { status: 200 });
       }
-    } else if (provider === "credentials" && existingUser) {
+    } else if (provider === "credentials") {
       // Handle credentials provider
+
+      if (!existingUser) {
+        return NextResponse.json({ message: "User not found." }, { status: 404 });
+      }
+
       const isPasswordCorrect = await comparePasswords(password!, existingUser.password!);
       if (isPasswordCorrect) {
         const accessToken = generateAccessToken(existingUser);

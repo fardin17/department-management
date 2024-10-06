@@ -1,10 +1,11 @@
 import React from "react";
 import Link from "next/link";
 import Logout from "../components/logout";
-import StoreProvider from "../provider/storeProvider";
 import SetCookie from "./setCookie";
 import { getServerAuthSession } from "../utils/helper/auth-helper";
 import { redirect } from "next/navigation";
+import StoreProvider from "../provider/storeProvider";
+import SetAuthInfo from "../components/auth/setAuthInfo";
 
 type Props = {
   children: React.ReactNode;
@@ -12,12 +13,12 @@ type Props = {
 
 export default async function Layout({ children }: Props) {
   const session = await getServerAuthSession();
-
   if (!session) redirect("/auth/login");
 
   return (
     <StoreProvider>
-      <SetCookie />
+      <SetAuthInfo session={session} />
+      <SetCookie session={session} />
       <div>
         <div className="bg-sky-500">
           <nav className="container mx-auto py-4 px-4 flex justify-between">
@@ -25,7 +26,7 @@ export default async function Layout({ children }: Props) {
               <Link href="/dashboard">Dashboard</Link>
               <Link href="/profile">Profile</Link>
             </div>
-            <Logout />
+            <Logout session={session} />
           </nav>
         </div>
         {children}

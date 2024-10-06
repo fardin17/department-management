@@ -1,16 +1,17 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { useSession } from "next-auth/react";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import { Button } from "@/app/components/ui/button";
 import { updateUserType } from "@/app/utils/helper/api-helper";
+import { Session } from "next-auth";
 
-export default function SelectAccountType() {
+type Props = { session: Session | null };
+
+export default function SelectAccountType({ session }: Props) {
   const [role, setRole] = useState<"student" | "teacher">();
   const router = useRouter();
-  const { data: session } = useSession();
 
   const handleContinue = async () => {
     if (!role) {

@@ -1,27 +1,23 @@
 "use client";
 
-import { signOut, useSession } from "next-auth/react";
-import { useRouter } from "next/navigation";
-import React, { useEffect } from "react";
+import { signOut } from "next-auth/react";
+import React from "react";
 import Cookies from "js-cookie";
+import { type Session } from "next-auth";
+import { Button } from "./ui/button";
 
-function Logout() {
-  const router = useRouter();
-  const { data: session } = useSession();
-
-  useEffect(() => {
-    if (!session?.user) router.push("/auth/login");
-  }, [session]);
-
+function Logout({ session }: { session: Session }) {
   return (
-    <button
+    <Button
+      className="bg-transparent hover:bg-sky-600"
+      variant={"outline"}
       onClick={() => {
         signOut();
         Cookies.remove("access-token");
       }}
     >
-      logout
-    </button>
+      Log out
+    </Button>
   );
 }
 
